@@ -1,0 +1,9 @@
+•	Work on studying the data and analyzing attributes
+•	Filter out attributes which would not be used for the project
+•	Design the flow of the website
+•	Create a basic webpage with headings and links split according to our project
+•	Design questions that we seek to answer through the project
+•	Convert those questions that would be easy to map to a visualization
+•	Create basic visualizations that help show an overview of the dataset
+•	Create an interactive visualization that allows user to filter attributes
+•	Create at least one visualization with linked views 
