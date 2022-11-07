@@ -1,0 +1,43 @@
+/*For banner */
+.banner {
+    background: #2C3333;
+    height: 70px;
+  }
+  
+  .banner_content {
+      color: #E7F6F2;
+      padding: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 30px;
+      flex-grow: 1;
+      font-family: 'Quicksand', sans-serif ;
+  }
+  
+  /*For navigation bar */
+.topnav {
+    background-color: #395B64;
+    overflow: hidden;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Quicksand', sans-serif ;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #FF9551;
+    color: white;
+  }
