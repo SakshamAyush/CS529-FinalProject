@@ -69,6 +69,9 @@ choropleth = async () => {
       tooltip.html(d.properties.NAME+"</br>"+d.properties.value)
       return tooltip.style("visibility", "visible");
     } )
+    .on('mousemove',function(d){
+      return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+    })
     // Hide the tooltip when "mouseout"
     .on('mouseout', function(d){
       return tooltip.style("visibility", "hidden");
