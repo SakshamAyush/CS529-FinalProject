@@ -5,6 +5,9 @@ choropleth = async () => {
               .attr("margin-left","100px")
   let projection = d3.geoAlbersUsa();
   let path = d3.geoPath(projection);
+  var lowColor = '#f9f9f9'
+  var highColor = '#bc2a66'
+
   temp = {}
   for(var i=0; i<data.length; i++)
   {
@@ -23,6 +26,7 @@ choropleth = async () => {
   let mapdata = await d3.json("Data/us-states.geojson")
   //console.log(mapdata.features[0].properties.NAME)
   console.log(Object.keys(temp).length)
+  var ramp = d3.scaleLinear().domain([0,40000]).range([lowColor,highColor])
   for(var i=0;i<Object.keys(temp).length;i++)
   {
     var state = Object.keys(temp)[i]
@@ -40,6 +44,19 @@ choropleth = async () => {
   }
   console.log(mapdata.features)
 
+  var tooltip = d3.select("body")
+  .append("div")
+  .style("position", "absolute")
+  .style("z-index", "10")
+  .style("visibility", "hidden")
+  .style("background", "grey")
+  .style("opacity",0.9)
+  .style("border", "solid")
+  .style("border-width", "2px")
+  .style("border-radius", "10px")
+  .style("padding", "15px")
+  .text("a simple tooltip");
+
   svg.selectAll("path")
     .data(mapdata.features)
     .enter()
@@ -47,7 +64,15 @@ choropleth = async () => {
     .attr("d", path)
     .style("stroke", "#fff")
     .style("stroke-width", "1")
-    .style("fill", function(d) { return ramp(d.properties.value) });
+    .style("fill", function(d) { return ramp(d.properties.value) })
+    .on('mouseover',function(d){
+      tooltip.html(d.properties.NAME+"</br>"+d.properties.value)
+      return tooltip.style("visibility", "visible");
+    } )
+    // Hide the tooltip when "mouseout"
+    .on('mouseout', function(d){
+      return tooltip.style("visibility", "hidden");
+    });
 
 		// add a legend
 		var w = 140, h = 300;
