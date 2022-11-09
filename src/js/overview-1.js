@@ -1,15 +1,15 @@
 choropleth = async () => {
   let usData = await d3.json("https://unpkg.com/us-atlas@3/counties-10m.json");
-  let data = await d3.csv("Data/final_data.csv")
+  let data = await d3.csv("Data/final_data.csv");
   let svg = d3.select("#map")
-              .attr("margin-left","00px")
+              .attr("margin-left","00px");
   let projection = d3.geoAlbersUsa();
   let path = d3.geoPath(projection);
-  var lowColor = '#f9f9f9'
-  var highColor = '#bc2a66'
+  let lowColor = '#f9f9f9';
+  let highColor = '#bc2a66';
 
   temp = {}
-  for(var i=0; i<data.length; i++)
+  for(let i=0; i<data.length; i++)
   {
     if(temp.hasOwnProperty(data[i].AgencyCode))
     {
@@ -17,40 +17,40 @@ choropleth = async () => {
     }
     else
     {
-      temp[data[i].AgencyCode] = 1
+      temp[data[i].AgencyCode] = 1;
     }
   }
 
-  var minValue = Number.POSITIVE_INFINITY
-  var maxValue = Number.NEGATIVE_INFINITY
-  let mapdata = await d3.json("Data/us-states.geojson")
+  let minValue = Number.POSITIVE_INFINITY;
+  let maxValue = Number.NEGATIVE_INFINITY;
+  let mapdata = await d3.json("Data/us-states.geojson");
   
-  for(var i=0;i<Object.keys(temp).length;i++)
+  for(let i=0;i<Object.keys(temp).length;i++)
   {
-    var state = Object.keys(temp)[i]
-    var value = Object.values(temp)[i]
+    let state = Object.keys(temp)[i];
+    let value = Object.values(temp)[i];
 
-    for(var j=0;j<mapdata.features.length; j++)
+    for(let j=0;j<mapdata.features.length; j++)
     {
-      var mapState = mapdata.features[j].properties.NAME
+      let mapState = mapdata.features[j].properties.NAME;
       if(state==mapState)
       { 
         if(value<minValue)
         {
-          minValue = value
+          minValue = value;
         }
         if(value>maxValue)
         {
-          maxValue = value
+          maxValue = value;
         }
-        mapdata.features[j].properties.value = value
+        mapdata.features[j].properties.value = value;
         break;
       }
     }
   }
-  var ramp = d3.scaleLinear().domain([minValue,maxValue]).range([lowColor,highColor])
+  let ramp = d3.scaleLinear().domain([minValue,maxValue]).range([lowColor,highColor]);
 
-  var tooltip = d3.select("body")
+  let tooltip = d3.select("body")
   .append("div")
   .style("position", "absolute")
   .style("z-index", "10")
@@ -72,7 +72,7 @@ choropleth = async () => {
      .style("stroke-width", "1")
      .style("fill", function(d) { return ramp(d.properties.value) })
      .on('mouseover',function(d){
-        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value)
+        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value);
         return tooltip.style("visibility", "visible");
       } )
      .on('mousemove',function(d){
@@ -82,15 +82,15 @@ choropleth = async () => {
         return tooltip.style("visibility", "hidden");
       });
 
-		var w = 140, h = 300;
+    let w = 140, h = 300;
 
-		var key = d3.select("#map")
+		let key = d3.select("#map")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h)
                 .attr("class", "legend");
 
-		var legend = key.append("defs")
+		let legend = key.append("defs")
                     .append("svg:linearGradient")
                     .attr("id", "gradient")
                     .attr("x1", "100%")
@@ -115,16 +115,16 @@ choropleth = async () => {
 			 .style("fill", "url(#gradient)")
 			 .attr("transform", "translate(0,10)");
 
-		var y = d3.scaleLinear()
+		let y = d3.scaleLinear()
               .range([h, 0])
               .domain([minValue, maxValue]);
 
-		var yAxis = d3.axisRight(y);
+		let yAxis = d3.axisRight(y);
 
 		key.append("g")
 			 .attr("class", "y axis")
 			 .attr("transform", "translate(41,10)")
-			 .call(yAxis)
+			 .call(yAxis);
 
 }
 choropleth()
