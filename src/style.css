@@ -57,11 +57,26 @@
 
 #textColumn{
   height: 600px;
-  background-color: #627879;
-  background: rgba(61, 74, 74, 0.7);
+  background-color: #395B64;
+  opacity: 0.7;
+  align-items: center ;
 }
 
-/* For visualization-1 */
+#textColumn h2{
+  font-size: 25px;
+  font-family: 'Quicksand', sans-serif ;
+  text-align: center;
+  color: #e9f4f1;
+}
+
+#textColumn p{
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif ;
+  text-align: center;
+  color: #e9f4f1;
+}
+
+/* For visualization-2 */
 
 #visual2{
     padding: 14px 16px;
