@@ -16,13 +16,13 @@
         <a href="index-02.html" class="active">More Visualizations</a>
     </div>
     <div class="container" id="morevisual1">
-        <label for="filter1">Choose filters:</label>
+        <label for="filter1">Choose filters:  </label>
         <select name="filter1" id="filter1">
             <option selected disabled>Select State</option>
-            <option value="rigatoni">Rigatoni</option>
-            <option value="dave">Dave</option>
-            <option value="pumpernickel">Pumpernickel</option>
-            <option value="reeses">Reeses</option>
+            <option value="illinois">Illinois</option>
+            <option value="newyork">New York</option>
+            <option value="washington">Washington</option>
+            <option value="texas">Texas</option>
         </select>
         <select name="filter2" id="filter2">
             <option selected disabled>Select Disability Type</option>
@@ -41,5 +41,19 @@
             <option value="white">White</option>
             <option value="hispanic">Hispanic</option>
         </select>
+          
+        <input type="button" class="clear" onclick="myFunction()"
+               value="Clear All" />
+  
+        <script>
+            function myFunction() {
+                var dropDown1 = document.getElementById("filter1");
+                dropDown1.selectedIndex = 0;
+                var dropDown2 = document.getElementById("filter2");
+                dropDown2.selectedIndex = 0;
+                var dropDown3 = document.getElementById("filter3");
+                dropDown3.selectedIndex = 0;
+            }
+        </script>
     </div>
 </body>

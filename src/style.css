@@ -105,3 +105,31 @@
     font-family: 'Quicksand', sans-serif ;
     color: #070808;
   }
+
+  #morevisual1 select{
+    border:none;
+    background-color: #395B64;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    opacity: 0.8;
+    border-radius:5px;
+    color: #ddd;
+    font-size: 15px;
+  }
+
+  .clear {
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #2C3333;
+    color: #ddd;
+    opacity: 0.8;
+    border:none;
+    margin-left: 20px;
+    border-radius:5px;
+    font-size: 15px;
+  }
+
