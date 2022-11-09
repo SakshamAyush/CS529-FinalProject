@@ -55,6 +55,12 @@
     background: rgba(165, 201, 202, 0.7);
   }
 
+#textColumn{
+  height: 600px;
+  background-color: #627879;
+  background: rgba(61, 74, 74, 0.7);
+}
+
 /* For visualization-1 */
 
 #visual2{

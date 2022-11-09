@@ -20,13 +20,10 @@ choropleth = async () => {
       temp[data[i].AgencyCode] = 1
     }
   }
-  //console.log(Object.keys(temp))
-  //console.log(Object.values(temp))
+
   var minValue = Number.POSITIVE_INFINITY
   var maxValue = Number.NEGATIVE_INFINITY
   let mapdata = await d3.json("Data/us-states.geojson")
-  //console.log(mapdata.features[0].properties.NAME)
-  console.log(Object.keys(temp).length)
   
   for(var i=0;i<Object.keys(temp).length;i++)
   {
@@ -51,8 +48,6 @@ choropleth = async () => {
       }
     }
   }
-  console.log(mapdata.features)
-
   var ramp = d3.scaleLinear().domain([minValue,maxValue]).range([lowColor,highColor])
 
   var tooltip = d3.select("body")
@@ -69,69 +64,67 @@ choropleth = async () => {
   .text("a simple tooltip");
 
   svg.selectAll("path")
-    .data(mapdata.features)
-    .enter()
-    .append("path")
-    .attr("d", path)
-    .style("stroke", "#000")
-    .style("stroke-width", "1")
-    .style("fill", function(d) { return ramp(d.properties.value) })
-    .on('mouseover',function(d){
-      tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value)
-      return tooltip.style("visibility", "visible");
-    } )
-    .on('mousemove',function(d){
-      return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
-    })
-    // Hide the tooltip when "mouseout"
-    .on('mouseout', function(d){
-      return tooltip.style("visibility", "hidden");
-    });
+     .data(mapdata.features)
+     .enter()
+     .append("path")
+     .attr("d", path)
+     .style("stroke", "#000")
+     .style("stroke-width", "1")
+     .style("fill", function(d) { return ramp(d.properties.value) })
+     .on('mouseover',function(d){
+        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value)
+        return tooltip.style("visibility", "visible");
+      } )
+     .on('mousemove',function(d){
+        return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+      })
+      .on('mouseout', function(d){
+        return tooltip.style("visibility", "hidden");
+      });
 
-		// add a legend
 		var w = 140, h = 300;
 
 		var key = d3.select("#map")
-			.append("svg")
-			.attr("width", w)
-			.attr("height", h)
-			.attr("class", "legend");
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h)
+                .attr("class", "legend");
 
 		var legend = key.append("defs")
-			.append("svg:linearGradient")
-			.attr("id", "gradient")
-			.attr("x1", "100%")
-			.attr("y1", "0%")
-			.attr("x2", "100%")
-			.attr("y2", "100%")
-			.attr("spreadMethod", "pad");
+                    .append("svg:linearGradient")
+                    .attr("id", "gradient")
+                    .attr("x1", "100%")
+                    .attr("y1", "0%")
+                    .attr("x2", "100%")
+                    .attr("y2", "100%")
+                    .attr("spreadMethod", "pad");
 
 		legend.append("stop")
-			.attr("offset", "0%")
-			.attr("stop-color", highColor)
-			.attr("stop-opacity", 1);
+          .attr("offset", "0%")
+          .attr("stop-color", highColor)
+          .attr("stop-opacity", 1);
 			
 		legend.append("stop")
-			.attr("offset", "100%")
-			.attr("stop-color", lowColor)
-			.attr("stop-opacity", 1);
+          .attr("offset", "100%")
+          .attr("stop-color", lowColor)
+          .attr("stop-opacity", 1);
 
 		key.append("rect")
-			.attr("width", w - 100)
-			.attr("height", h)
-			.style("fill", "url(#gradient)")
-			.attr("transform", "translate(0,10)");
+			 .attr("width", w - 100)
+			 .attr("height", h)
+			 .style("fill", "url(#gradient)")
+			 .attr("transform", "translate(0,10)");
 
 		var y = d3.scaleLinear()
-			.range([h, 0])
-			.domain([minValue, maxValue]);
+              .range([h, 0])
+              .domain([minValue, maxValue]);
 
 		var yAxis = d3.axisRight(y);
 
 		key.append("g")
-			.attr("class", "y axis")
-			.attr("transform", "translate(41,10)")
-			.call(yAxis)
+			 .attr("class", "y axis")
+			 .attr("transform", "translate(41,10)")
+			 .call(yAxis)
 
 }
 choropleth()
