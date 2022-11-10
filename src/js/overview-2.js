@@ -16,39 +16,39 @@ ethnicity =  async () => {
 
   //console.log(ethnicity[0].Black)
 
-  var AmerInd = d3.group(ethnicity, d => d.AmericanIndian);
-  var AmerIndF = (AmerInd.get(1)).length
-  //console.log(AmerIndF)
+  let amerInd = d3.group(ethnicity, d => d.AmericanIndian);
+  let amerIndF = (amerInd.get(1)).length
+  //console.log(amerIndF)
 
-  var Asian = d3.group(ethnicity, d => d.Asian);
-  var AsianF = (Asian.get(1)).length
-  //console.log(AsianF)
+  let asian = d3.group(ethnicity, d => d.Asian);
+  let asianF = (asian.get(1)).length
+  //console.log(asianF)
 
-  var Black = d3.group(ethnicity, d => d.Black);
-  var BlackF = (Black.get(1)).length
-  //console.log(BlackF)
+  let black = d3.group(ethnicity, d => d.Black);
+  let blackF = (black.get(1)).length
+  //console.log(blackF)
 
-  var Hawaiian = d3.group(ethnicity, d => d.Hawaiian);
-  var HawaiianF = (Hawaiian.get(1)).length
-  //console.log(HawaiianF)
+  let hawaiian = d3.group(ethnicity, d => d.Hawaiian);
+  let hawaiianF = (hawaiian.get(1)).length
+  //console.log(hawaiianF)
 
-  var White = d3.group(ethnicity, d => d.White);
-  var WhiteF = (White.get(1)).length
-  //console.log(WhiteF)
+  let white = d3.group(ethnicity, d => d.White);
+  let whiteF = (white.get(1)).length
+  //console.log(whiteF)
   
-  var Hispanic = d3.group(ethnicity, d => d.Hispanic);
-  var HispanicF = (Hispanic.get(1)).length
-  //console.log(HispanicF)
+  let hispanic = d3.group(ethnicity, d => d.Hispanic);
+  let hispanicF = (hispanic.get(1)).length
+  //console.log(hispanicF)
 
-  var Veteran = d3.group(ethnicity, d => d.Veteran);
-  var VeteranF = (Veteran.get(1)).length
-  //console.log(VeteranF)
+  let veteran = d3.group(ethnicity, d => d.Veteran);
+  let veteranF = (veteran.get(1)).length
+  //console.log(veteranF)
 
-  var Student = d3.group(ethnicity, d => d.Student);
-  var StudentF = (Student.get(1)).length+(Student.get(2)).length+(Student.get(3)).length
-  //console.log(StudentF)
+  let student = d3.group(ethnicity, d => d.Student);
+  let studentF = (student.get(1)).length+(student.get(2)).length+(student.get(3)).length
+  //console.log(studentF)
 
-  const EthArray = [
+  const ethArray = [
       {Ethnicity : 'AmericanIndian', Frequency : 0},
       {Ethnicity : 'Asian', Frequency : 0},
       {Ethnicity : 'Black', Frequency : 0},
@@ -59,91 +59,91 @@ ethnicity =  async () => {
       {Ethnicity : 'Student', Frequency : 0}
       ];
 
-for (const i of EthArray) {
+for (const i of ethArray) {
   if (i.Ethnicity == 'AmericanIndian') {
-    i.Frequency = AmerIndF;
+    i.Frequency = amerIndF;
     }
   if (i.Ethnicity == 'Asian') {
-    i.Frequency = AsianF;
+    i.Frequency = asianF;
     }
   if (i.Ethnicity == 'Black') {
-    i.Frequency = BlackF;
+    i.Frequency = blackF;
     }
   if (i.Ethnicity == 'Hawaiian') {
-    i.Frequency = HawaiianF;
+    i.Frequency = hawaiianF;
     }
   if (i.Ethnicity == 'White') {
-    i.Frequency = WhiteF;
+    i.Frequency = whiteF;
     }
   if (i.Ethnicity == 'Hispanic') {
-    i.Frequency = HispanicF;
+    i.Frequency = hispanicF;
     }
     if (i.Ethnicity == 'Veteran') {
-    i.Frequency = VeteranF;
+    i.Frequency = veteranF;
     }
   if (i.Ethnicity == 'Student') {
-    i.Frequency = StudentF;
+    i.Frequency = studentF;
     }
   }
 
-//console.log(EthArray)
+//console.log(ethArray)
 
-var PrimDis = d3.group(ethnicity, d => d.Disability);
+let primDis = d3.group(ethnicity, d => d.Disability);
 
-var NoDis = (PrimDis.get(0)).length
-//console.log(NoDis)
+let noDis = (primDis.get(0)).length
+//console.log(noDis)
 
-var Sensory = (PrimDis.get(1)).length+(PrimDis.get(2)).length+(PrimDis.get(3)).length
-              +(PrimDis.get(4)).length+(PrimDis.get(5)).length+(PrimDis.get(6)).length 
-              +(PrimDis.get(7)).length+(PrimDis.get(8)).length+(PrimDis.get(9)).length
-//console.log(Sensory)
+let sensory = (primDis.get(1)).length+(primDis.get(2)).length+(primDis.get(3)).length
+              +(primDis.get(4)).length+(primDis.get(5)).length+(primDis.get(6)).length 
+              +(primDis.get(7)).length+(primDis.get(8)).length+(primDis.get(9)).length
+//console.log(sensory)
 
-var Physical = (PrimDis.get(10)).length+(PrimDis.get(11)).length
-              +(PrimDis.get(12)).length+(PrimDis.get(13)).length
-              +(PrimDis.get(14)).length+(PrimDis.get(15)).length 
-              +(PrimDis.get(16)).length
-//console.log(Physical)
+let physical = (primDis.get(10)).length+(primDis.get(11)).length
+              +(primDis.get(12)).length+(primDis.get(13)).length
+              +(primDis.get(14)).length+(primDis.get(15)).length 
+              +(primDis.get(16)).length
+//console.log(physical)
 
-var Cognitive = (PrimDis.get(17)).length
-//console.log(Cognitive)
+let cognitive = (primDis.get(17)).length
+//console.log(cognitive)
 
-var Mental = (PrimDis.get(18)).length+(PrimDis.get(19)).length
-//console.log(Mental)
+let mental = (primDis.get(18)).length+(primDis.get(19)).length
+//console.log(mental)
 
 
-const DisablDist = [
+const disablDist = [
       {Type : 'Sensory', Count : 0},
       {Type : 'Physical', Count : 0},
       {Type : 'Cognitive', Count : 0},
       {Type : 'Mental', Count : 0}
       ];
 
-for (const j of DisablDist) {
+for (const j of disablDist) {
   if (j.Type == 'Sensory') {
-    j.Count = Sensory;
+    j.Count = sensory;
     }
   if (j.Type == 'Physical') {
-    j.Count = Physical;
+    j.Count = physical;
     }
   if (j.Type == 'Cognitive') {
-    j.Count = Cognitive;
+    j.Count = cognitive;
     }
   if (j.Type == 'Mental') {
-    j.Count = Mental;
+    j.Count = mental;
     }
   }
 
- console.log(DisablDist)
-  console.log(EthArray)
+//console.log(disablDist)
+//console.log(ethArray)
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
+let margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz1")
+let svg = d3.select("#my_dataviz1")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -151,9 +151,9 @@ var svg = d3.select("#my_dataviz1")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-var x = d3.scaleBand()
+let x = d3.scaleBand()
     .range([ 0, width ])
-    .domain(EthArray.map(function(d) { return d.Ethnicity; }))
+    .domain(ethArray.map(function(d) { return d.Ethnicity; }))
     .padding(0.2);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -163,7 +163,7 @@ var x = d3.scaleBand()
       .style("text-anchor", "end");
 
   // Add Y axis
-  var y = d3.scaleLinear()
+  let y = d3.scaleLinear()
     .domain([0, 280000])
     .range([ height, 0]);
   svg.append("g")
@@ -171,17 +171,17 @@ var x = d3.scaleBand()
 
   // Bars
   svg.selectAll("mybar")
-    .data(EthArray)
+    .data(ethArray)
     .enter()
     .append("rect")
       .attr("x", function(d) { return x(d.Ethnicity); })
       .attr("y", function(d) { return y(d.Frequency); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.Frequency); })
-      .attr("fill", "Red")
+      .attr("fill", "#bc2a66")
 
 
-  var svg1 = d3.select("#my_dataviz2")
+  let svg1 = d3.select("#my_dataviz2")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -189,9 +189,9 @@ var x = d3.scaleBand()
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-var x1 = d3.scaleBand()
+let x1 = d3.scaleBand()
     .range([ 0, width ])
-    .domain(DisablDist.map(function(d) { return d.Type; }))
+    .domain(disablDist.map(function(d) { return d.Type; }))
     .padding(0.2);
   svg1.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -201,7 +201,7 @@ var x1 = d3.scaleBand()
       .style("text-anchor", "end");
 
   // Add Y axis
-  var y1 = d3.scaleLinear()
+  let y1 = d3.scaleLinear()
     .domain([0, 150000])
     .range([ height, 0]);
   svg1.append("g")
@@ -209,14 +209,14 @@ var x1 = d3.scaleBand()
 
   // Bars
   svg1.selectAll("rect")
-    .data(DisablDist)
+    .data(disablDist)
     .enter()
     .append("rect")
       .attr("x", function(d) { return x1(d.Type); })
       .attr("y", function(d) { return y1(d.Count); })
       .attr("width", x1.bandwidth())
       .attr("height", function(d) { return height - y1(d.Count); })
-      .attr("fill", "SteelBlue")
+      .attr("fill", "#bc2a66")
 
 }
 
