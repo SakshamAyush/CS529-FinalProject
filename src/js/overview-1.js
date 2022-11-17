@@ -14,6 +14,7 @@ choropleth = async () => {
   temp = {}
   gender = {}
   eth = {}
+  disab = {}
   for(let i=0; i<data.length; i++)
   {
     if(temp.hasOwnProperty(data[i].AgencyCode))
@@ -113,6 +114,57 @@ choropleth = async () => {
       }
     }
 
+    if(disab.hasOwnProperty(data[i].AgencyCode))
+    {
+      if(data[i].PrimDisability==1 || data[i].PrimDisability==2 || data[i].PrimDisability==3 || data[i].PrimDisability==4 || data[i].PrimDisability==5
+        || data[i].PrimDisability==6 || data[i].PrimDisability==7 || data[i].PrimDisability==8 || data[i].PrimDisability==9)
+      {
+        disab[data[i].AgencyCode].SensoryImpairments = disab[data[i].AgencyCode].SensoryImpairments + 1;
+      }
+      else if(data[i].PrimDisability==10 || data[i].PrimDisability==11 || data[i].PrimDisability==12 || data[i].PrimDisability==13 || data[i].PrimDisability==14
+        || data[i].PrimDisability==15 || data[i].PrimDisability==16)
+      {
+        disab[data[i].AgencyCode].PhysicalImpairments = disab[data[i].AgencyCode].PhysicalImpairments + 1;
+      }
+      else if(data[i].PrimDisability == 17)
+      {
+        disab[data[i].AgencyCode].CognitiveImpairments = disab[data[i].AgencyCode].CognitiveImpairments + 1;
+      }
+      else if(data[i].PrimDisability == 18 || data[i].PrimDisability == 19)
+      {
+        disab[data[i].AgencyCode].MentalImpairments = disab[data[i].AgencyCode].MentalImpairments + 1;
+      }
+      else{
+        disab[data[i].AgencyCode].NoImpairments = disab[data[i].AgencyCode].NoImpairments + 1;
+      }
+    }
+    if(!(disab.hasOwnProperty(data[i].AgencyCode)))
+    {
+      if(data[i].PrimDisability==1 || data[i].PrimDisability==2 || data[i].PrimDisability==3 || data[i].PrimDisability==4 || data[i].PrimDisability==5
+        || data[i].PrimDisability==6 || data[i].PrimDisability==7 || data[i].PrimDisability==8 || data[i].PrimDisability==9)
+      {
+        disab[data[i].AgencyCode] = { SensoryImpairments:1, PhysicalImpairments:0, MentalImpairments:0, CognitiveImpairments:0, NoImpairments: 0}
+      }
+      else if(data[i].PrimDisability==10 || data[i].PrimDisability==11 || data[i].PrimDisability==12 || data[i].PrimDisability==13 || data[i].PrimDisability==14
+        || data[i].PrimDisability==15 || data[i].PrimDisability==16)
+      {
+        disab[data[i].AgencyCode] = { SensoryImpairments:0, PhysicalImpairments:1, MentalImpairments:0, CognitiveImpairments:0, NoImpairments: 0}
+      }
+      else if(data[i].PrimDisability == 17)
+      {
+        disab[data[i].AgencyCode] = { SensoryImpairments:0, PhysicalImpairments:0, MentalImpairments:0, CognitiveImpairments:1, NoImpairments: 0}
+      }
+      else if(data[i].PrimDisability == 18 || data[i].PrimDisability == 19)
+      {
+        disab[data[i].AgencyCode] = { SensoryImpairments:0, PhysicalImpairments:0, MentalImpairments:1, CognitiveImpairments:0, NoImpairments: 0}
+      }
+      else
+      {
+        disab[data[i].AgencyCode] = { SensoryImpairments:0, PhysicalImpairments:0, MentalImpairments:0, CognitiveImpairments:0, NoImpairments: 1}
+      }
+    }
+
+
   }
   console.log(eth)
 
@@ -179,6 +231,7 @@ choropleth = async () => {
       //gender_plot(gender,selectedState)
       //console.log(ethnicity)
       ethnicity_plot(eth,selectedState)
+      disability_plot(disab, selectedState)
       })
      .on('mouseover',function(d){
         tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value);
@@ -263,4 +316,9 @@ function ethnicity_plot(eth,selectedState)
 {
   //console.log(eth)
   console.log(eth[selectedState])
+}
+
+function disability_plot(disab, selectedState)
+{
+  console.log(disab[selectedState])
 }
