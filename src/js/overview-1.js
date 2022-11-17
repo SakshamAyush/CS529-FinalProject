@@ -13,6 +13,7 @@ choropleth = async () => {
   //Getting counts for each state
   temp = {}
   gender = {}
+  eth = {}
   for(let i=0; i<data.length; i++)
   {
     if(temp.hasOwnProperty(data[i].AgencyCode))
@@ -22,8 +23,9 @@ choropleth = async () => {
     if(!(temp.hasOwnProperty(data[i].AgencyCode)))
     {
       temp[data[i].AgencyCode] = 1;
-      //gender[data[i].AgencyCode] = {Male:0, Female:0}
     }
+
+
     if(gender.hasOwnProperty(data[i].AgencyCode))
     {
       if(data[i].Sex==1)
@@ -55,7 +57,64 @@ choropleth = async () => {
       }
     }
 
+
+    if(eth.hasOwnProperty(data[i].AgencyCode))
+    {
+      if(data[i].AmerIndian==1)
+      {
+        eth[data[i].AgencyCode].AmerIndian = eth[data[i].AgencyCode].AmerIndian + 1;
+      }
+      if(data[i].Asian==1)
+      {
+        eth[data[i].AgencyCode].Asian = eth[data[i].AgencyCode].Asian + 1;
+      }
+      if(data[i].Black==1)
+      {
+        eth[data[i].AgencyCode].Black = eth[data[i].AgencyCode].Black + 1;
+      }
+      if(data[i].Hawaiian==1)
+      {
+        eth[data[i].AgencyCode].Hawaiian = eth[data[i].AgencyCode].Hawaiian + 1;
+      }
+      if(data[i].White==1)
+      {
+        eth[data[i].AgencyCode].White = eth[data[i].AgencyCode].White + 1;
+      }
+      if(data[i].Hispanic==1)
+      {
+        eth[data[i].AgencyCode].Hispanic = eth[data[i].AgencyCode].Hispanic + 1;
+      }
+    }
+    if(!(eth.hasOwnProperty(data[i].AgencyCode)))
+    {
+      if(data[i].AmerIndian==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:1, Asian:0, Black:0, Hawaiian:0, White:0, Hispanic:0}
+      }
+      if(data[i].Asian==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:0, Asian:1, Black:0, Hawaiian:0, White:0, Hispanic:0}
+      }
+      if(data[i].Black==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:0, Asian:0, Black:1, Hawaiian:0, White:0, Hispanic:0}
+      }
+      if(data[i].Hawaiian==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:0, Asian:0, Black:0, Hawaiian:1, White:0, Hispanic:0}
+      }
+      if(data[i].White==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:0, Asian:0, Black:0, Hawaiian:0, White:1, Hispanic:0}
+      }
+      if(data[i].Hispanic==1)
+      {
+        eth[data[i].AgencyCode] = {AmerIndian:0, Asian:0, Black:0, Hawaiian:0, White:0, Hispanic:1}
+      }
+    }
+
   }
+  console.log(eth)
 
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
@@ -115,9 +174,11 @@ choropleth = async () => {
      .on("click", function (d) {
       //console.log(d.properties.NAME)
       selectedState = d.properties.NAME
-      console.log(gender[selectedState])
       svg.selectAll("path").style("stroke-width", "1")
       d3.select(this).style("stroke-width","5")
+      //gender_plot(gender,selectedState)
+      //console.log(ethnicity)
+      ethnicity_plot(eth,selectedState)
       })
      .on('mouseover',function(d){
         tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value);
@@ -183,3 +244,23 @@ choropleth = async () => {
 
 }
 choropleth()
+
+/*function gender_plot(gender,selectedState)
+{
+  //console.log(gender[selectedState])
+  let svg = d3.select("#viz1");
+  const margin = 10;
+  let width = svg.attr("width") - margin;
+  let height = svg.attr("height") - margin;
+  var xScale = d3.scaleBand().range ([0, width]).padding(0.4)
+  //console.log(Object.keys(gender[selectedState]))
+  const yScale = d3.scaleLinear().range ([height, 0]);
+  var g = svg.append("g")
+               .attr("transform", "translate(" + 100 + "," + 100 + ")");
+}*/
+
+function ethnicity_plot(eth,selectedState)
+{
+  //console.log(eth)
+  console.log(eth[selectedState])
+}
