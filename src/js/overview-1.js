@@ -2,16 +2,17 @@ choropleth = async () => {
   //Adding the dataset
   let data = await d3.csv("Data/final_data.csv");
   //Creating svg for the map
-  let svg = d3.select("#map")
-              .attr("margin-left","00px");
+  let svg = d3.select("#map");
   let projection = d3.geoAlbersUsa();
   let path = d3.geoPath(projection);
   //Setting colors for the scale
   let lowColor = '#f9f9f9';
   let highColor = '#bc2a66';
+  let selectedState = "None"
 
   //Getting counts for each state
   temp = {}
+  gender = {}
   for(let i=0; i<data.length; i++)
   {
     if(temp.hasOwnProperty(data[i].AgencyCode))
@@ -21,8 +22,10 @@ choropleth = async () => {
     else
     {
       temp[data[i].AgencyCode] = 1;
+      gender[data[i].AgencyCode] = {Male:0, Female:0}
     }
   }
+  console.log(gender["Alabama"].Male)
 
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
@@ -79,6 +82,13 @@ choropleth = async () => {
      .style("stroke", "#000")
      .style("stroke-width", "1")
      .style("fill", function(d) { return ramp(d.properties.value) })
+     .on("click", function (d) {
+      //console.log(d.properties.NAME)
+      selectedState = d.properties.NAME
+      console.log(selectedState)
+      svg.selectAll("path").style("stroke-width", "1")
+      d3.select(this).style("stroke-width","5")
+      })
      .on('mouseover',function(d){
         tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value);
         return tooltip.style("visibility", "visible");
@@ -89,6 +99,9 @@ choropleth = async () => {
       .on('mouseout', function(d){
         return tooltip.style("visibility", "hidden");
       });
+
+  //Adding title
+
 
   //Adding legend
   let w = 140, h = 300;
@@ -134,6 +147,9 @@ choropleth = async () => {
 			.attr("class", "y axis")
 			.attr("transform", "translate(41,10)")
 			.call(yAxis);
+
+
+
 
 }
 choropleth()
