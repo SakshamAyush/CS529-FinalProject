@@ -19,13 +19,43 @@ choropleth = async () => {
     {
       temp[data[i].AgencyCode] = temp[data[i].AgencyCode] + 1;
     }
-    else
+    if(!(temp.hasOwnProperty(data[i].AgencyCode)))
     {
       temp[data[i].AgencyCode] = 1;
-      gender[data[i].AgencyCode] = {Male:0, Female:0}
+      //gender[data[i].AgencyCode] = {Male:0, Female:0}
     }
+    if(gender.hasOwnProperty(data[i].AgencyCode))
+    {
+      if(data[i].Sex==1)
+      {
+        gender[data[i].AgencyCode].Male = gender[data[i].AgencyCode].Male + 1;
+      }
+      if(data[i].Sex==2)
+      {
+        gender[data[i].AgencyCode].Female = gender[data[i].AgencyCode].Female + 1;
+      }
+      if(data[i].Sex==9 || data[i].Sex==0)
+      {
+        gender[data[i].AgencyCode].DidNotIdentify = gender[data[i].AgencyCode].DidNotIdentify + 1;
+      }
+    }
+    if(!(gender.hasOwnProperty(data[i].AgencyCode)))
+    {
+      if(data[i].Sex==1)
+      {
+        gender[data[i].AgencyCode] = {Male:1, Female:0, DidNotIdentify:0}
+      }
+      if(data[i].Sex==2)
+      {
+        gender[data[i].AgencyCode] = {Male:0, Female:1, DidNotIdentify:0}
+      }
+      if(data[i].Sex==9 || data[i].Sex==0)
+      {
+        gender[data[i].AgencyCode] = {Male:0, Female:0, DidNotIdentify:1}
+      }
+    }
+
   }
-  console.log(gender["Alabama"].Male)
 
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
@@ -85,7 +115,7 @@ choropleth = async () => {
      .on("click", function (d) {
       //console.log(d.properties.NAME)
       selectedState = d.properties.NAME
-      console.log(selectedState)
+      console.log(gender[selectedState])
       svg.selectAll("path").style("stroke-width", "1")
       d3.select(this).style("stroke-width","5")
       })
