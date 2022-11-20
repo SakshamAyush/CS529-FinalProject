@@ -64,7 +64,7 @@
 #textColumn{
   height: 670px;
   background-color: #395B64;
-  opacity: 0.7;
+  opacity: 0.85;
   align-items: center ;
 }
 
@@ -117,7 +117,7 @@
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
-    opacity: 0.8;
+    opacity: 1;
     border-radius:5px;
     color: #ddd;
     font-size: 15px;

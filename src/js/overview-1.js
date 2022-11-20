@@ -298,37 +298,37 @@ choropleth()
 
 function gender_plot(gender,selectedState)
 {
-  let data = []
-  let val=[]
+  let gender_data = []
+  let gval=[]
   for(let i=0;i<3;i++)
   {
-    const temp = {"Key": Object.keys(gender[selectedState])[i], "Value": parseInt(Object.values(gender[selectedState])[i]) }
-    if(temp.Value!==0)
+    const gtemp = {"Key": Object.keys(gender[selectedState])[i], "Value": parseInt(Object.values(gender[selectedState])[i]) }
+    if(gtemp.Value!==0)
     {
-      data.push(temp)
-    val.push(parseInt(Object.values(gender[selectedState])[i]))
+      gender_data.push(gtemp)
+      gval.push(parseInt(Object.values(gender[selectedState])[i]))
     }
     
   }
-  var margin = {top: 30, right: 40, bottom: 70, left:65}
-  let width = 440 
-  let height = 200-20
+  var gmargin = {top: 30, right: 40, bottom: 70, left:65}
+  let gwidth = 440 
+  let gheight = 200-20
   let svg_gender = d3.select("#viz1")
   d3.selectAll("#viz1 > *").remove(); 
   let x = d3.scaleBand()
-            .range([65,width-40])
-            .domain(data.map(function(d) {return d.Key}))
+            .range([65,gwidth-40])
+            .domain(gender_data.map(function(dg) {return dg.Key}))
             .padding(0.6);
   svg_gender.append("g")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + gheight + ")")
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(10,0)rotate(0)")
             .style("text-anchor", "end");
   var y = d3.scaleLinear()
-            .domain([0, Math.max(...val)+100])
-            .range([ height, 10]);
-  svg_gender.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+            .domain([0, Math.max(...gval)+100])
+            .range([ gheight, 10]);
+  svg_gender.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${gmargin.left},0)`)
 
   svg_gender.append("text")
   .attr("class", "y label")
@@ -339,13 +339,13 @@ function gender_plot(gender,selectedState)
   .text("Count");
 
     svg_gender.selectAll("bar")
-    .data(data)
+    .data(gender_data)
     .enter()
     .append("rect")
-      .attr("x", function(d) { return x(d.Key); })
-      .attr("y", function(d)  {return y(d.Value); })
+      .attr("x", function(dg) { return x(dg.Key); })
+      .attr("y", function(dg)  {return y(dg.Value); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.Value); })
+      .attr("height", function(dg) { return gheight - y(dg.Value); })
       .attr("fill", "#bc2a66");
   svg_gender.append("text")
       .text("Gender")
@@ -362,8 +362,19 @@ function gender_plot(gender,selectedState)
 
 function ethnicity_plot(eth,selectedState)
 {
-  //console.log(eth)
-  //console.log(eth[selectedState])
+  let eth_data = []
+  let eval=[]
+  for(let i=0;i<6;i++)
+  {
+    const etemp = {"Key": Object.keys(eth[selectedState])[i], "Value": parseInt(Object.values(eth[selectedState])[i]) }
+    if(etemp.Value!==0)
+    {
+      eth_data.push(etemp)
+      eval.push(parseInt(Object.values(eth[selectedState])[i]))
+    }
+  }
+  console.log(eth_data)
+  
 }
 
 function disability_plot(disab, selectedState)
