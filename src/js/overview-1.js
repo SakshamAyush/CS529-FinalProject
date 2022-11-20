@@ -410,10 +410,51 @@ for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
   .attr("stroke","black");
 
   //draw axis label
-  svg_eth.append("text")
+  if(ft_name=="Black")
+  {
+    svg_eth.append("text")
+  .attr("x", label_coordinate.x-40)
+  .attr("y", label_coordinate.y+10)
+  .text(ft_name);
+  }
+  if(ft_name=="Asian")
+  {
+    svg_eth.append("text")
+  .attr("x", label_coordinate.x-40)
+  .attr("y", label_coordinate.y)
+  .text(ft_name);
+  }
+  if(ft_name=="AmerIndian")
+  {
+    svg_eth.append("text")
+  .attr("x", label_coordinate.x-40)
+  .attr("y", label_coordinate.y)
+  .text(ft_name);
+  }
+  if(ft_name=="White")
+  {
+    svg_eth.append("text")
+  .attr("x", label_coordinate.x)
+  .attr("y", label_coordinate.y+10)
+  .text(ft_name);
+  }
+  if(ft_name=="Hawaiian")
+  {
+    svg_eth.append("text")
+  .attr("x", label_coordinate.x-25)
+  .attr("y", label_coordinate.y+10)
+  .text(ft_name);
+  }
+  if(ft_name=="Hispanic")
+  {
+    svg_eth.append("text")
   .attr("x", label_coordinate.x)
   .attr("y", label_coordinate.y)
   .text(ft_name);
+  }
+  
+  
+  
 }
 
 let line = d3.line()
@@ -425,9 +466,6 @@ function ethval_pos(value){
     let tick_pos = [1,2,4,6,8,10]
     let sort_eval = eval;
     sort_eval.sort(function(a, b){return a - b});
-    console.log(sort_eval)
-    console.log(sort_eval.indexOf(value))
-    console.log(tick_pos[sort_eval.indexOf(value)])
     return tick_pos[sort_eval.indexOf(value)]
 }
 
@@ -455,7 +493,7 @@ svg_eth.append("path")
 .attr("stroke", color)
 .attr("fill", color)
 .attr("stroke-opacity", 1)
-.attr("opacity", 0.5);
+.attr("opacity", 0.8);
 
 ethval_pos(694)
 
