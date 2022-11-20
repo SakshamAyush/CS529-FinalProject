@@ -166,7 +166,6 @@ choropleth = async () => {
 
 
   }
-  console.log(eth)
 
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
@@ -228,8 +227,7 @@ choropleth = async () => {
       selectedState = d.properties.NAME
       svg.selectAll("path").style("stroke-width", "1")
       d3.select(this).style("stroke-width","5")
-      //gender_plot(gender,selectedState)
-      //console.log(ethnicity)
+      gender_plot(gender,selectedState)
       ethnicity_plot(eth,selectedState)
       disability_plot(disab, selectedState)
       })
@@ -298,27 +296,77 @@ choropleth = async () => {
 }
 choropleth()
 
-/*function gender_plot(gender,selectedState)
+function gender_plot(gender,selectedState)
 {
-  //console.log(gender[selectedState])
-  let svg = d3.select("#viz1");
-  const margin = 10;
-  let width = svg.attr("width") - margin;
-  let height = svg.attr("height") - margin;
-  var xScale = d3.scaleBand().range ([0, width]).padding(0.4)
-  //console.log(Object.keys(gender[selectedState]))
-  const yScale = d3.scaleLinear().range ([height, 0]);
-  var g = svg.append("g")
-               .attr("transform", "translate(" + 100 + "," + 100 + ")");
-}*/
+  let data = []
+  let val=[]
+  for(let i=0;i<3;i++)
+  {
+    const temp = {"Key": Object.keys(gender[selectedState])[i], "Value": parseInt(Object.values(gender[selectedState])[i]) }
+    if(temp.Value!==0)
+    {
+      data.push(temp)
+    val.push(parseInt(Object.values(gender[selectedState])[i]))
+    }
+    
+  }
+  var margin = {top: 30, right: 40, bottom: 70, left:65}
+  let width = 440 
+  let height = 200-20
+  let svg_gender = d3.select("#viz1")
+  d3.selectAll("#viz1 > *").remove(); 
+  let x = d3.scaleBand()
+            .range([65,width-40])
+            .domain(data.map(function(d) {return d.Key}))
+            .padding(0.6);
+  svg_gender.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(10,0)rotate(0)")
+            .style("text-anchor", "end");
+  var y = d3.scaleLinear()
+            .domain([0, Math.max(...val)+100])
+            .range([ height, 10]);
+  svg_gender.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+
+  svg_gender.append("text")
+  .attr("class", "y label")
+  .attr("text-anchor", "end")
+  .attr("x", -60)
+  .attr("y", 20)
+  .attr("transform", "rotate(-90)")
+  .text("Count");
+
+    svg_gender.selectAll("bar")
+    .data(data)
+    .enter()
+    .append("rect")
+      .attr("x", function(d) { return x(d.Key); })
+      .attr("y", function(d)  {return y(d.Value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.Value); })
+      .attr("fill", "#bc2a66");
+  svg_gender.append("text")
+      .text("Gender")
+      .attr("x", 410)
+      .attr("y",80)
+      .style("font","30px times");
+    svg_gender.append("text")
+      .text("Distribution")
+      .attr("x", 380)
+      .attr("y",110)
+      .style("font","30px times");
+
+}
 
 function ethnicity_plot(eth,selectedState)
 {
   //console.log(eth)
-  console.log(eth[selectedState])
+  //console.log(eth[selectedState])
 }
 
 function disability_plot(disab, selectedState)
 {
-  console.log(disab[selectedState])
+  //console.log(disab[selectedState])
 }
