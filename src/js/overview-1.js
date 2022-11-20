@@ -362,6 +362,7 @@ function gender_plot(gender,selectedState)
 
 function ethnicity_plot(eth,selectedState)
 {
+  let eth_features = ["AmerIndian","Asian","Black","Hawaiian","White","Hispanic"]
   let eth_data = []
   let eval=[]
   for(let i=0;i<6;i++)
@@ -373,8 +374,92 @@ function ethnicity_plot(eth,selectedState)
       eval.push(parseInt(Object.values(eth[selectedState])[i]))
     }
   }
-  console.log(eth_data)
-  
+  let svg_eth = d3.select("#viz2")
+  d3.selectAll("#viz2 > *").remove(); 
+  let radialScale = d3.scaleLinear()
+    .domain([0,10])
+    .range([0,90]);
+let ticks = [1,2,4,6,8,10];
+
+ticks.forEach(t =>
+  svg_eth.append("circle")
+  .attr("cx", 130)
+  .attr("cy", 110)
+  .attr("fill", "none")
+  .attr("stroke", "gray")
+  .attr("r", radialScale(t))
+);
+function angleToCoordinate(angle, value){
+  let x = Math.cos(angle) * radialScale(value);
+  let y = Math.sin(angle) * radialScale(value);
+  return {"x": 130 + x, "y": 110 - y};
+}
+
+for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
+  let ft_name = Object.keys(eth[selectedState])[i];
+  let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(eth[selectedState]).length);
+  let line_coordinate = angleToCoordinate(angle, 10);
+  let label_coordinate = angleToCoordinate(angle, 10.5);
+
+  //draw axis line
+  svg_eth.append("line")
+  .attr("x1", 130)
+  .attr("y1", 110)
+  .attr("x2", line_coordinate.x)
+  .attr("y2", line_coordinate.y)
+  .attr("stroke","black");
+
+  //draw axis label
+  svg_eth.append("text")
+  .attr("x", label_coordinate.x)
+  .attr("y", label_coordinate.y)
+  .text(ft_name);
+}
+
+let line = d3.line()
+    .x(d => d.x)
+    .y(d => d.y);
+let colors = ["#bc2a66"];
+
+function ethval_pos(value){
+    let tick_pos = [1,2,4,6,8,10]
+    let sort_eval = eval;
+    sort_eval.sort(function(a, b){return a - b});
+    console.log(sort_eval)
+    console.log(sort_eval.indexOf(value))
+    console.log(tick_pos[sort_eval.indexOf(value)])
+    return tick_pos[sort_eval.indexOf(value)]
+}
+
+function getPathCoordinates(data_point){
+  console.log(data_point)
+  let coordinates = [];
+  for (var i = 0; i < Object.keys(data_point).length; i++){
+      let ft_name = Object.keys(data_point)[i];
+      let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(data_point).length);
+      coordinates.push(angleToCoordinate(angle, ethval_pos(Object.values(data_point)[i])));
+  }
+  return coordinates;
+}
+
+
+let d = eth[selectedState];
+let color = colors;
+let coordinates = getPathCoordinates(d);
+
+//draw the path element
+svg_eth.append("path")
+.datum(coordinates)
+.attr("d",line)
+.attr("stroke-width", 3)
+.attr("stroke", color)
+.attr("fill", color)
+.attr("stroke-opacity", 1)
+.attr("opacity", 0.5);
+
+ethval_pos(694)
+
+
 }
 
 function disability_plot(disab, selectedState)
