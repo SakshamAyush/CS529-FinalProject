@@ -333,10 +333,7 @@ function gender_plot(gender,selectedState)
 
   svg_gender.append("g")
             .attr("transform", "translate(0," + gheight + ")")
-            .call(d3.axisBottom(x))
-            .selectAll("text")
-            .attr("transform", "translate(10,0)rotate(0)")
-            .style("text-anchor", "end");
+            .call(d3.axisBottom(x));
 
   var y = d3.scaleLinear()
             .domain([0, Math.max(...gval)+100])
