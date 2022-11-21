@@ -312,7 +312,7 @@ function gender_plot(gender,selectedState)
   }
   var gmargin = {top: 30, right: 40, bottom: 70, left:65}
   let gwidth = 440 
-  let gheight = 200-20
+  let gheight = 200-30
   let svg_gender = d3.select("#viz1")
   d3.selectAll("#viz1 > *").remove(); 
   let x = d3.scaleBand()
@@ -358,6 +358,14 @@ function gender_plot(gender,selectedState)
       .attr("y",110)
       .style("font","30px times");
 
+    svg_gender.append("line")
+  .attr("x1", 0)
+  .attr("y1", 200)
+  .attr("x2", 540)
+  .attr("y2", 200)
+  .attr("stroke","black")
+  .attr("stroke-width","3");
+
 }
 
 function ethnicity_plot(eth,selectedState)
@@ -383,7 +391,7 @@ let ticks = [1,2,4,6,8,10];
 
 ticks.forEach(t =>
   svg_eth.append("circle")
-  .attr("cx", 130)
+  .attr("cx", 180)
   .attr("cy", 110)
   .attr("fill", "none")
   .attr("stroke", "gray")
@@ -392,7 +400,7 @@ ticks.forEach(t =>
 function angleToCoordinate(angle, value){
   let x = Math.cos(angle) * radialScale(value);
   let y = Math.sin(angle) * radialScale(value);
-  return {"x": 130 + x, "y": 110 - y};
+  return {"x": 180 + x, "y": 110 - y};
 }
 
 for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
@@ -403,7 +411,7 @@ for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
 
   //draw axis line
   svg_eth.append("line")
-  .attr("x1", 130)
+  .attr("x1", 180)
   .attr("y1", 110)
   .attr("x2", line_coordinate.x)
   .attr("y2", line_coordinate.y)
@@ -453,8 +461,6 @@ for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
   .text(ft_name);
   }
   
-  
-  
 }
 
 let line = d3.line()
@@ -495,7 +501,25 @@ svg_eth.append("path")
 .attr("stroke-opacity", 1)
 .attr("opacity", 0.8);
 
-ethval_pos(694)
+svg_eth.append("line")
+.attr("x1", 0)
+.attr("y1", 225)
+.attr("x2", 540)
+.attr("y2", 225)
+.attr("stroke","black")
+.attr("stroke-width","3");
+
+svg_eth.append("text")
+.text("Ethnicity")
+.attr("x", 400)
+.attr("y",80)
+.style("font","30px times");
+svg_eth.append("text")
+.text("Distribution")
+.attr("x", 380)
+.attr("y",110)
+.style("font","30px times");
+
 
 
 }
