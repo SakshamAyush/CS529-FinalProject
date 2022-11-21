@@ -201,17 +201,17 @@ choropleth = async () => {
 
   //Creating tooltip
   let tooltip = d3.select("body")
-  .append("div")
-  .style("position", "absolute")
-  .style("z-index", "10")
-  .style("visibility", "hidden")
-  .style("background", "grey")
-  .style("opacity",0.9)
-  .style("border", "solid")
-  .style("border-width", "2px")
-  .style("border-radius", "10px")
-  .style("padding", "15px")
-  .text("a simple tooltip");
+                  .append("div")
+                  .style("position", "absolute")
+                  .style("z-index", "10")
+                  .style("visibility", "hidden")
+                  .style("background", "grey")
+                  .style("opacity",0.9)
+                  .style("border", "solid")
+                  .style("border-width", "2px")
+                  .style("border-radius", "10px")
+                  .style("padding", "15px")
+                  .text("a simple tooltip");
 
   //Creating the map
   svg.selectAll("path")
@@ -223,7 +223,6 @@ choropleth = async () => {
      .style("stroke-width", "1")
      .style("fill", function(d) { return ramp(d.properties.value) })
      .on("click", function (d) {
-      //console.log(d.properties.NAME)
       selectedState = d.properties.NAME
       svg.selectAll("path").style("stroke-width", "1")
       d3.select(this).style("stroke-width","5")
@@ -232,7 +231,7 @@ choropleth = async () => {
       disability_plot(disab, selectedState)
       })
      .on('mouseover',function(d){
-        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>Count: </b>"+d.properties.value);
+        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>VR Applicants: </b>"+d.properties.value);
         return tooltip.style("visibility", "visible");
       } )
      .on('mousemove',function(d){
@@ -241,8 +240,6 @@ choropleth = async () => {
       .on('mouseout', function(d){
         return tooltip.style("visibility", "hidden");
       });
-
-  //Adding title
 
 
   //Adding legend
@@ -315,56 +312,85 @@ function gender_plot(gender,selectedState)
   let gheight = 200-30
   let svg_gender = d3.select("#viz1")
   d3.selectAll("#viz1 > *").remove(); 
+
+  let gen_tooltip = d3.select("body")
+                  .append("div")
+                  .style("position", "absolute")
+                  .style("z-index", "10")
+                  .style("visibility", "hidden")
+                  .style("background", "grey")
+                  .style("opacity",0.9)
+                  .style("border", "solid")
+                  .style("border-width", "2px")
+                  .style("border-radius", "10px")
+                  .style("padding", "15px")
+                  .text("a simple tooltip");
+
   let x = d3.scaleBand()
             .range([65,gwidth-40])
             .domain(gender_data.map(function(dg) {return dg.Key}))
             .padding(0.6);
+
   svg_gender.append("g")
             .attr("transform", "translate(0," + gheight + ")")
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(10,0)rotate(0)")
             .style("text-anchor", "end");
+
   var y = d3.scaleLinear()
             .domain([0, Math.max(...gval)+100])
             .range([ gheight, 10]);
+
   svg_gender.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${gmargin.left},0)`)
 
   svg_gender.append("text")
-  .attr("class", "y label")
-  .attr("text-anchor", "end")
-  .attr("x", -60)
-  .attr("y", 20)
-  .attr("transform", "rotate(-90)")
-  .text("Count");
+            .attr("class", "y label")
+            .attr("text-anchor", "end")
+            .attr("x", -60)
+            .attr("y", 20)
+            .attr("transform", "rotate(-90)")
+            .text("Count");
 
-    svg_gender.selectAll("bar")
-    .data(gender_data)
-    .enter()
-    .append("rect")
-      .attr("x", function(dg) { return x(dg.Key); })
-      .attr("y", function(dg)  {return y(dg.Value); })
-      .attr("width", x.bandwidth())
-      .attr("height", function(dg) { return gheight - y(dg.Value); })
-      .attr("fill", "#bc2a66");
+  svg_gender.selectAll("bar")
+            .data(gender_data)
+            .enter()
+            .append("rect")
+            .attr("x", function(dg) { return x(dg.Key); })
+            .attr("y", function(dg)  {return y(dg.Value); })
+            .attr("width", x.bandwidth())
+            .attr("height", function(dg) { return gheight - y(dg.Value); })
+            .attr("fill", "#bc2a66")
+            .on('mouseover',function(dg){
+              gen_tooltip.html("<b>Count: </b>"+dg.Value);
+              return gen_tooltip.style("visibility", "visible");
+            })
+           .on('mousemove',function(dg){
+              return gen_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+            })
+           .on('mouseout', function(){
+              return gen_tooltip.style("visibility", "hidden");
+            });
+
   svg_gender.append("text")
-      .text("Gender")
-      .attr("x", 410)
-      .attr("y",80)
-      .style("font","30px times");
-    svg_gender.append("text")
-      .text("Distribution")
-      .attr("x", 380)
-      .attr("y",110)
-      .style("font","30px times");
+            .text("Gender")
+            .attr("x", 410)
+            .attr("y",80)
+            .style("font","30px times");
 
-    svg_gender.append("line")
-  .attr("x1", 0)
-  .attr("y1", 200)
-  .attr("x2", 540)
-  .attr("y2", 200)
-  .attr("stroke","black")
-  .attr("stroke-width","3");
+  svg_gender.append("text")
+            .text("Distribution")
+            .attr("x", 380)
+            .attr("y",110)
+            .style("font","30px times");
+
+  svg_gender.append("line")
+            .attr("x1", 0)
+            .attr("y1", 200)
+            .attr("x2", 540)
+            .attr("y2", 200)
+            .attr("stroke","black")
+            .attr("stroke-width","3");
 
 }
 
@@ -382,145 +408,224 @@ function ethnicity_plot(eth,selectedState)
       eval.push(parseInt(Object.values(eth[selectedState])[i]))
     }
   }
-  let svg_eth = d3.select("#viz2")
+  let svg_eth = d3.select("#viz2");
   d3.selectAll("#viz2 > *").remove(); 
+
+  let eth_tooltip = d3.select("body")
+                      .append("div")
+                      .style("position", "absolute")
+                      .style("z-index", "10")
+                      .style("visibility", "hidden")
+                      .style("background", "grey")
+                      .style("opacity",0.9)
+                      .style("border", "solid")
+                      .style("border-width", "2px")
+                      .style("border-radius", "10px")
+                      .style("padding", "15px")
+                      .text("a simple tooltip");
+
   let radialScale = d3.scaleLinear()
-    .domain([0,10])
-    .range([0,90]);
-let ticks = [1,2,4,6,8,10];
+                      .domain([0,10])
+                      .range([0,90]);
 
-ticks.forEach(t =>
-  svg_eth.append("circle")
-  .attr("cx", 180)
-  .attr("cy", 110)
-  .attr("fill", "none")
-  .attr("stroke", "gray")
-  .attr("r", radialScale(t))
-);
-function angleToCoordinate(angle, value){
-  let x = Math.cos(angle) * radialScale(value);
-  let y = Math.sin(angle) * radialScale(value);
-  return {"x": 180 + x, "y": 110 - y};
-}
+  let ticks = [1,2,4,6,8,10];
 
-for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
-  let ft_name = Object.keys(eth[selectedState])[i];
-  let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(eth[selectedState]).length);
-  let line_coordinate = angleToCoordinate(angle, 10);
-  let label_coordinate = angleToCoordinate(angle, 10.5);
+  ticks.forEach(t =>
+    svg_eth.append("circle")
+           .attr("cx", 180)
+           .attr("cy", 110)
+           .attr("fill", "none")
+           .attr("stroke", "gray")
+           .attr("r", radialScale(t))
+  );
+  function angleToCoordinate(angle, value){
+    let x = Math.cos(angle) * radialScale(value);
+    let y = Math.sin(angle) * radialScale(value);
+    return {"x": 180 + x, "y": 110 - y};
+  }
 
-  //draw axis line
-  svg_eth.append("line")
-  .attr("x1", 180)
-  .attr("y1", 110)
-  .attr("x2", line_coordinate.x)
-  .attr("y2", line_coordinate.y)
-  .attr("stroke","black");
+  for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
+    let ft_name = Object.keys(eth[selectedState])[i];
+    let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(eth[selectedState]).length);
+    let line_coordinate = angleToCoordinate(angle, 10);
+    let label_coordinate = angleToCoordinate(angle, 10.5);
 
-  //draw axis label
-  if(ft_name=="Black")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x-40)
-  .attr("y", label_coordinate.y+10)
-  .text(ft_name);
-  }
-  if(ft_name=="Asian")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x-40)
-  .attr("y", label_coordinate.y)
-  .text(ft_name);
-  }
-  if(ft_name=="AmerIndian")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x-40)
-  .attr("y", label_coordinate.y)
-  .text(ft_name);
-  }
-  if(ft_name=="White")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x)
-  .attr("y", label_coordinate.y+10)
-  .text(ft_name);
-  }
-  if(ft_name=="Hawaiian")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x-25)
-  .attr("y", label_coordinate.y+10)
-  .text(ft_name);
-  }
-  if(ft_name=="Hispanic")
-  {
-    svg_eth.append("text")
-  .attr("x", label_coordinate.x)
-  .attr("y", label_coordinate.y)
-  .text(ft_name);
-  }
-  
-}
+    //draw axis line
+    svg_eth.append("line")
+           .attr("x1", 180)
+           .attr("y1", 110)
+           .attr("x2", line_coordinate.x)
+           .attr("y2", line_coordinate.y)
+           .attr("stroke","black");
 
-let line = d3.line()
-    .x(d => d.x)
-    .y(d => d.y);
-let colors = ["#bc2a66"];
+    //draw axis label
+    if(ft_name=="Black")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x-40)
+             .attr("y", label_coordinate.y+10)
+             .text(ft_name)
+             .on('mouseover',function(){
+                eth_tooltip.html("<b>Count: </b>"+eth[selectedState].Black);
+                return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+                return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+                return eth_tooltip.style("visibility", "hidden");
+              });
+    }
 
-function ethval_pos(value){
+    if(ft_name=="Asian")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x-40)
+             .attr("y", label_coordinate.y)
+             .text(ft_name)
+             .on('mouseover',function(){
+                eth_tooltip.html("<b>Count: </b>"+eth[selectedState].Asian);
+                return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+                return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+                return eth_tooltip.style("visibility", "hidden");
+              });
+    }
+
+    if(ft_name=="AmerIndian")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x-40)
+             .attr("y", label_coordinate.y)
+             .text(ft_name)
+             .on('mouseover',function(){
+               eth_tooltip.html("<b>Count: </b>"+eth[selectedState].AmerIndian);
+               return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+                return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+                return eth_tooltip.style("visibility", "hidden");
+              });
+    }
+
+    if(ft_name=="White")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x)
+             .attr("y", label_coordinate.y+10)
+             .text(ft_name)
+             .on('mouseover',function(){
+               eth_tooltip.html("<b>Count: </b>"+eth[selectedState].White);
+                return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+               return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+                return eth_tooltip.style("visibility", "hidden");
+              });
+    }
+
+    if(ft_name=="Hawaiian")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x-25)
+             .attr("y", label_coordinate.y+10)
+             .text(ft_name)
+             .on('mouseover',function(){
+                eth_tooltip.html("<b>Count: </b>"+eth[selectedState].Hawaiian);
+                return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+               return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+               return eth_tooltip.style("visibility", "hidden");
+              });
+    }
+
+    if(ft_name=="Hispanic")
+    {
+      svg_eth.append("text")
+             .attr("x", label_coordinate.x)
+             .attr("y", label_coordinate.y)
+             .text(ft_name)
+             .on('mouseover',function(){
+               eth_tooltip.html("<b>Count: </b>"+eth[selectedState].Hispanic);
+                return eth_tooltip.style("visibility", "visible");
+              })
+             .on('mousemove',function(){
+               return eth_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+              })
+             .on('mouseout', function(){
+               return eth_tooltip.style("visibility", "hidden");
+              });
+    }
+    
+  }
+
+  let line = d3.line()
+                .x(d => d.x)
+                .y(d => d.y);
+
+  let colors = ["#bc2a66"];
+
+  function ethval_pos(value){
     let tick_pos = [1,2,4,6,8,10]
     let sort_eval = eval;
     sort_eval.sort(function(a, b){return a - b});
     return tick_pos[sort_eval.indexOf(value)]
-}
-
-function getPathCoordinates(data_point){
-  console.log(data_point)
-  let coordinates = [];
-  for (var i = 0; i < Object.keys(data_point).length; i++){
-      let ft_name = Object.keys(data_point)[i];
-      let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(data_point).length);
-      coordinates.push(angleToCoordinate(angle, ethval_pos(Object.values(data_point)[i])));
   }
-  return coordinates;
-}
+
+  function getPathCoordinates(data_point){
+    let coordinates = [];
+    for (var i = 0; i < Object.keys(data_point).length; i++){
+        let ft_name = Object.keys(data_point)[i];
+        let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(data_point).length);
+        coordinates.push(angleToCoordinate(angle, ethval_pos(Object.values(data_point)[i])));
+    }
+    return coordinates;
+  }
 
 
-let d = eth[selectedState];
-let color = colors;
-let coordinates = getPathCoordinates(d);
+  let d = eth[selectedState];
+  let color = colors;
+  let coordinates = getPathCoordinates(d);
 
-//draw the path element
-svg_eth.append("path")
-.datum(coordinates)
-.attr("d",line)
-.attr("stroke-width", 3)
-.attr("stroke", color)
-.attr("fill", color)
-.attr("stroke-opacity", 1)
-.attr("opacity", 0.8);
+  //draw the path element
+  svg_eth.append("path")
+         .datum(coordinates)
+         .attr("d",line)
+         .attr("stroke-width", 3)
+         .attr("stroke", color)
+         .attr("fill", color)
+         .attr("stroke-opacity", 1)
+         .attr("opacity", 0.8);
 
-svg_eth.append("line")
-.attr("x1", 0)
-.attr("y1", 225)
-.attr("x2", 540)
-.attr("y2", 225)
-.attr("stroke","black")
-.attr("stroke-width","3");
+  svg_eth.append("line")
+         .attr("x1", 0)
+         .attr("y1", 225)
+         .attr("x2", 540)
+         .attr("y2", 225)
+         .attr("stroke","black")
+         .attr("stroke-width","3");
 
-svg_eth.append("text")
-.text("Ethnicity")
-.attr("x", 400)
-.attr("y",80)
-.style("font","30px times");
-svg_eth.append("text")
-.text("Distribution")
-.attr("x", 380)
-.attr("y",110)
-.style("font","30px times");
+  svg_eth.append("text")
+         .text("Ethnicity")
+         .attr("x", 400)
+         .attr("y",80)
+         .style("font","30px times");
 
-
+  svg_eth.append("text")
+         .text("Distribution")
+         .attr("x", 380)
+         .attr("y",110)
+         .style("font","30px times");
 
 }
 
