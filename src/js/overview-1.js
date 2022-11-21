@@ -354,9 +354,27 @@ function gender_plot(gender,selectedState)
             .enter()
             .append("rect")
             .attr("x", function(dg) { return x(dg.Key); })
-            .attr("y", function(dg)  {return y(dg.Value); })
+            .attr("y", function(dg)  {
+              if(dg.Key=="DidNotIdentify")
+              {
+                return y(dg.Value+20);
+              }
+              else
+              {
+                return y(dg.Value);
+              }
+            })
             .attr("width", x.bandwidth())
-            .attr("height", function(dg) { return gheight - y(dg.Value); })
+            .attr("height", function(dg) { 
+              if(dg.Key=="DidNotIdentify")
+              {
+                return gheight - y(dg.Value+20);
+              }
+              else
+              {
+                return gheight - y(dg.Value);
+              }
+             })
             .attr("fill", "#bc2a66")
             .on('mouseover',function(dg){
               gen_tooltip.html("<b>Count: </b>"+dg.Value);
@@ -388,6 +406,7 @@ function gender_plot(gender,selectedState)
             .attr("y2", 200)
             .attr("stroke","black")
             .attr("stroke-width","3");
+
 
 }
 
