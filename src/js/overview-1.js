@@ -650,8 +650,8 @@ function disability_plot(disab, selectedState)
   let sorted_disab = Object.entries(disab[selectedState]).sort((a,b) => b[1]-a[1])
   let dis_data = []
   let dval=[]
-  let disx = [150,60,250,150,200]
-  let disy = [150,90,90,40,150]
+  let disx = [155,65,255,155,205]
+  let disy = [170,100,100,40,160]
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
   for(let i=0;i<5;i++)
   {
@@ -730,13 +730,109 @@ function disability_plot(disab, selectedState)
 svg_dis.append("text")
        .text("Disability")
        .attr("x", 390)
-       .attr("y",80)
+       .attr("y",100)
        .style("font","30px times");
 
 svg_dis.append("text")
        .text("Distribution")
        .attr("x", 380)
-       .attr("y",110)
+       .attr("y",130)
        .style("font","30px times");
+
+svg_dis.append("circle")
+       .attr("cx",370)
+       .attr("cy",20)
+       .attr("r", 4)
+       .style("fill", function()
+       {
+        let sort_dval2 = dval;
+        sort_dval2.sort(function(a, b){return b - a});
+        return dis_color[sort_dval2.indexOf(disab[selectedState].CognitiveImpairments)]; 
+       })
+
+svg_dis.append("text")
+       .attr("x", 390)
+       .attr("y", 20)
+       .text("Congitive Impairments")
+       .style("font-size", "15px")
+       .attr("alignment-baseline","middle")
+
+svg_dis.append("circle")
+       .attr("cx",370)
+       .attr("cy",40)
+       .attr("r", 4)
+       .style("fill", function()
+       {
+        let sort_dval2 = dval;
+        sort_dval2.sort(function(a, b){return b - a});
+        return dis_color[sort_dval2.indexOf(disab[selectedState].SensoryImpairments)]; 
+       })
+
+svg_dis.append("text")
+       .attr("x", 390)
+       .attr("y", 40)
+       .text("Sensory Impairments")
+       .style("font-size", "15px")
+       .attr("alignment-baseline","middle")
+
+svg_dis.append("circle")
+       .attr("cx",370)
+       .attr("cy",170)
+       .attr("r", 4)
+       .style("fill", function()
+       {
+        let sort_dval2 = dval;
+        sort_dval2.sort(function(a, b){return b - a});
+        return dis_color[sort_dval2.indexOf(disab[selectedState].PhysicalImpairments)]; 
+       })
+
+svg_dis.append("text")
+       .attr("x", 390)
+       .attr("y", 170)
+       .text("Physical Impairments")
+       .style("font-size", "15px")
+       .attr("alignment-baseline","middle")
+
+svg_dis.append("circle")
+       .attr("cx",370)
+       .attr("cy",190)
+       .attr("r", 4)
+       .style("fill", function()
+       {
+        let sort_dval2 = dval;
+        sort_dval2.sort(function(a, b){return b - a});
+        return dis_color[sort_dval2.indexOf(disab[selectedState].MentalImpairments)]; 
+       })
+
+svg_dis.append("text")
+       .attr("x", 390)
+       .attr("y", 190)
+       .text("Mental Impairments")
+       .style("font-size", "15px")
+       .attr("alignment-baseline","middle")
+
+if(disab[selectedState].NoImpairments!=0)
+{
+  svg_dis.append("circle")
+         .attr("cx",370)
+         .attr("cy",210)
+         .attr("r", 4)
+         .style("fill", function()
+          {
+            let sort_dval2 = dval;
+            sort_dval2.sort(function(a, b){return b - a});
+            return dis_color[sort_dval2.indexOf(disab[selectedState].NoImpairments)]; 
+         })
+
+  svg_dis.append("text")
+         .attr("x", 390)
+         .attr("y", 210)
+         .text("No Impairments")
+        .style("font-size", "15px")
+        .attr("alignment-baseline","middle")
+}
+
+
+
 
 }
