@@ -647,5 +647,96 @@ function ethnicity_plot(eth,selectedState)
 
 function disability_plot(disab, selectedState)
 {
-  //console.log(disab[selectedState])
+  let sorted_disab = Object.entries(disab[selectedState]).sort((a,b) => b[1]-a[1])
+  let dis_data = []
+  let dval=[]
+  let disx = [150,60,250,150,200]
+  let disy = [150,90,90,40,150]
+  let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
+  for(let i=0;i<5;i++)
+  {
+    const dtemp = {"Key": Object.keys(disab[selectedState])[i], "Value": Object.values(disab[selectedState])[i], "X": disx[i], "Y": disy[i] }
+    if(dtemp.Value!==0)
+    {
+      dis_data.push(dtemp)
+      dval.push(Object.values(disab[selectedState])[i])
+    }
+  }
+  console.log(dis_data)
+  let svg_dis = d3.select("#viz3");
+  d3.selectAll("#viz3 > *").remove(); 
+
+  let dis_tooltip = d3.select("body")
+                      .append("div")
+                      .style("position", "absolute")
+                      .style("z-index", "10")
+                      .style("visibility", "hidden")
+                      .style("background", "grey")
+                      .style("opacity",0.9)
+                      .style("border", "solid")
+                      .style("border-width", "2px")
+                      .style("border-radius", "10px")
+                      .style("padding", "15px")
+                      .text("a simple tooltip");
+
+  svg_dis.selectAll("circle")
+      .data(dis_data)
+      .enter()
+      .append("circle")
+      .attr("cx", function(dd) {return dd.X})
+      .attr("cy", function(dd) {return dd.Y})
+      .attr("r", function(dd) {
+        return Math.sqrt(dd.Value)
+      })
+      .attr("fill", function(dd) {
+        let sort_dval = dval;
+        sort_dval.sort(function(a, b){return b - a});
+        return dis_color[sort_dval.indexOf(dd.Value)];
+      })
+      .on('mouseover',function(dd){
+        function getKey(key)
+        {
+          if(key=="SensoryImpairments")
+          {
+            return "Sensory Impairments"
+          }
+          if(key=="Physical Impairments")
+          {
+            return "Physical Impairments"
+          }
+          if(key=="Mental Impairments")
+          {
+            return "Mental Impairments"
+          }
+          if(key="Cognitive Impairments")
+          {
+            return "Cognitive Impairments"
+          }
+          if(key="No Impairments")
+          {
+            return "No Impairments"
+          }
+        }
+        dis_tooltip.html("<b>Disability Type: </b>"+getKey(dd.Key) +"</br>"+"<b>Count: </b>"+dd.Value);
+        return dis_tooltip.style("visibility", "visible");
+      } )
+     .on('mousemove',function(d){
+        return dis_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+      })
+      .on('mouseout', function(d){
+        return dis_tooltip.style("visibility", "hidden");
+      });
+
+svg_dis.append("text")
+       .text("Disability")
+       .attr("x", 390)
+       .attr("y",80)
+       .style("font","30px times");
+
+svg_dis.append("text")
+       .text("Distribution")
+       .attr("x", 380)
+       .attr("y",110)
+       .style("font","30px times");
+
 }
