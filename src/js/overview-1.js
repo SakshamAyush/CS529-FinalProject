@@ -233,7 +233,7 @@ choropleth = async () => {
       disability_plot(disab, selectedState)
       })
      .on('mouseover',function(d){
-        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>VR Applicants: </b>"+d.properties.value);
+        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>VR Applicant Count: </b>"+d.properties.value);
         return tooltip.style("visibility", "visible");
       } )
      .on('mousemove',function(d){
@@ -312,7 +312,7 @@ function gender_plot(gender,selectedState)
     }
     
   }
-  var gmargin = {top: 30, right: 40, bottom: 70, left:65}
+  let gmargin = {top: 30, right: 40, bottom: 70, left:65}
   let gwidth = 440 
   let gheight = 200-30
   let svg_gender = d3.select("#viz3")
@@ -342,7 +342,7 @@ function gender_plot(gender,selectedState)
             .attr("transform", "translate(0," + gheight + ")")
             .call(d3.axisBottom(x));
 
-  var y = d3.scaleLinear()
+  let y = d3.scaleLinear()
             .domain([0, Math.max(...gval)+100])
             .range([ gheight, 10]);
 
@@ -473,7 +473,7 @@ function ethnicity_plot(eth,selectedState)
     return {"x": 180 + x, "y": 110 - y};
   }
 
-  for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
+  for (let i = 0; i < Object.keys(eth[selectedState]).length; i++) {
     let ft_name = Object.keys(eth[selectedState])[i];
     let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(eth[selectedState]).length);
     let line_coordinate = angleToCoordinate(angle, 10);
@@ -615,7 +615,7 @@ function ethnicity_plot(eth,selectedState)
   //Creating the path for plot
   function getPathCoordinates(data_point){
     let coordinates = [];
-    for (var i = 0; i < Object.keys(data_point).length; i++){
+    for (let i = 0; i < Object.keys(data_point).length; i++){
         let ft_name = Object.keys(data_point)[i];
         let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(data_point).length);
         coordinates.push(angleToCoordinate(angle, ethval_pos(Object.values(data_point)[i])));

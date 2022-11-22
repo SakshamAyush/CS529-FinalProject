@@ -230,7 +230,7 @@ scatter = async (type) => {
 let init = function() {
     parseData();
     createScatterplot();
-    createHeatchart();
+    //createHeatchart();
 };
 
 init();
