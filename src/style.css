@@ -82,7 +82,7 @@
 /* For page 2 */
   #moreinfo{
     padding: 10px 10px;
-    height: 1070px;
+    height: 1170px;
     align-items: center ;
     margin-top: 25px;
     background-color: #A5C9CA;
@@ -107,4 +107,8 @@
     font-family: 'Quicksand', sans-serif ;
     text-align: left;
     color: #2C3333;
+  }
+
+  #moreinfo ul{
+    list-style-type: square;
   }

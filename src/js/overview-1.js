@@ -9,7 +9,7 @@ choropleth = async () => {
   let lowColor = '#f9f9f9';
   let highColor = '#bc2a66';
   let selectedState = "None"
-
+ 
   temp = {}
   gender = {}
   eth = {}
