@@ -7,9 +7,10 @@
 <script src="https://d3js.org/d3-array.v2.min.js"></script> 
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script src="https://unpkg.com/topojson@3"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <body style="background-image: url(src/background2.jpg); background-position: center; background-size: cover;">
 <script src="src/js/overview-1.js"></script>
-<script src="src/js/overview-2.js"></script>
+<script src="src/js/overview-3.js"></script>
     <div class="banner">
         <div class="banner_content">
         Visualizations and Data Analytics focusing on Disability Disparities
@@ -32,9 +33,46 @@
          </div>
         
     </div>
-    <div class="container" id="visual2">
-        <svg id="my_dataviz1" height=400 width=600></svg>
-        <svg id="my_dataviz2" height=400 width=600></svg>
-    </div>
+
+    <style>
+
+    div#plots {
+        margin-bottom: 5px;
+    }
+
+    div#scatterplot, div#heatchart {
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+    }
+
+    div#scatterContainer, div#heatchartContainer {
+        float: left;
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    </style>
+        <div class="container" id="visual2">
+            <div id="plots">
+                <div id="scatterContainer">
+                    <div id="scatterplot"></div>
+                </div>
+    
+                <div id="heatchartContainer">
+                     <div id="heatchart"></div>
+                </div>           
+            </div>
+            <text> <h1>Hourly Wage V/S Hours Worked per Week for each Disability</h1> </text>
+            <br>
+            <div id="radio">
+                <input type="radio" id="radio1" name="radio" value="1" checked="checked" onclick="scatter(this.value)" /><label for="radio1">Sensory/Communicative Impairments</label>
+                <br>
+                <input type="radio" id="radio2" name="radio" value="2" onclick="scatter(this.value)" /><label for="radio2">Physical Impairments</label>
+                <br>
+                <input type="radio" id="radio3" name="radio" value="3" onclick="scatter(this.value)"/><label for="radio3">Cognitive Impairments</label><br>
+                <input type="radio" id="radio4" name="radio" value="4" onclick="scatter(this.value)"/><label for="radio4">Mental Impairments</label>
+            </div>
+        </div>
 
 </body>
