@@ -527,9 +527,9 @@ function ethnicity_plot(eth,selectedState)
     if(ft_name=="AmerIndian")
     {
       svg_eth.append("text")
-             .attr("x", label_coordinate.x-40)
+             .attr("x", label_coordinate.x-55)
              .attr("y", label_coordinate.y)
-             .text(ft_name)
+             .text("American Indian")
              .on('mouseover',function(){
                eth_tooltip.html("<b>Count: </b>"+eth[selectedState].AmerIndian);
                return eth_tooltip.style("visibility", "visible");
