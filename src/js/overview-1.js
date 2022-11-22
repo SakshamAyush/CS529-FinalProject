@@ -10,13 +10,13 @@ choropleth = async () => {
   let highColor = '#bc2a66';
   let selectedState = "None"
 
-  //Getting counts for each state
   temp = {}
   gender = {}
   eth = {}
   disab = {}
   for(let i=0; i<data.length; i++)
   {
+    //Getting counts for each state
     if(temp.hasOwnProperty(data[i].AgencyCode))
     {
       temp[data[i].AgencyCode] = temp[data[i].AgencyCode] + 1;
@@ -26,7 +26,7 @@ choropleth = async () => {
       temp[data[i].AgencyCode] = 1;
     }
 
-
+    //Getting counts of gender for each state
     if(gender.hasOwnProperty(data[i].AgencyCode))
     {
       if(data[i].Sex==1)
@@ -58,7 +58,7 @@ choropleth = async () => {
       }
     }
 
-
+    //Getting counts of ethnicity for each state
     if(eth.hasOwnProperty(data[i].AgencyCode))
     {
       if(data[i].AmerIndian==1)
@@ -114,6 +114,7 @@ choropleth = async () => {
       }
     }
 
+    //Getting counts of disability groups for each state
     if(disab.hasOwnProperty(data[i].AgencyCode))
     {
       if(data[i].PrimDisability==1 || data[i].PrimDisability==2 || data[i].PrimDisability==3 || data[i].PrimDisability==4 || data[i].PrimDisability==5
@@ -223,6 +224,7 @@ choropleth = async () => {
      .style("stroke-width", "1")
      .style("fill", function(d) { return ramp(d.properties.value) })
      .on("click", function (d) {
+      //Showing other Viz for selected State
       selectedState = d.properties.NAME
       svg.selectAll("path").style("stroke-width", "1")
       d3.select(this).style("stroke-width","5")
@@ -293,12 +295,15 @@ choropleth = async () => {
 }
 choropleth()
 
+
+//Plot for gender distribution
 function gender_plot(gender,selectedState)
 {
   let gender_data = []
   let gval=[]
   for(let i=0;i<3;i++)
   {
+    //Creating a dictionary of gender counts
     const gtemp = {"Key": Object.keys(gender[selectedState])[i], "Value": parseInt(Object.values(gender[selectedState])[i]) }
     if(gtemp.Value!==0)
     {
@@ -313,6 +318,7 @@ function gender_plot(gender,selectedState)
   let svg_gender = d3.select("#viz3")
   d3.selectAll("#viz3 > *").remove(); 
 
+  //Creating tooltip
   let gen_tooltip = d3.select("body")
                   .append("div")
                   .style("position", "absolute")
@@ -331,6 +337,7 @@ function gender_plot(gender,selectedState)
             .domain(gender_data.map(function(dg) {return dg.Key}))
             .padding(0.6);
 
+  //Creating X-Axis
   svg_gender.append("g")
             .attr("transform", "translate(0," + gheight + ")")
             .call(d3.axisBottom(x));
@@ -339,8 +346,12 @@ function gender_plot(gender,selectedState)
             .domain([0, Math.max(...gval)+100])
             .range([ gheight, 10]);
 
-  svg_gender.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${gmargin.left},0)`)
+  //Creating Y-Axis
+  svg_gender.append('g')
+            .call(d3.axisLeft(y))
+            .attr('transform', `translate(${gmargin.left},0)`)
 
+  //Creating Y-label          
   svg_gender.append("text")
             .attr("class", "y label")
             .attr("text-anchor", "end")
@@ -349,6 +360,7 @@ function gender_plot(gender,selectedState)
             .attr("transform", "rotate(-90)")
             .text("Count");
 
+  //Creating Bar Chart
   svg_gender.selectAll("bar")
             .data(gender_data)
             .enter()
@@ -357,6 +369,7 @@ function gender_plot(gender,selectedState)
             .attr("y", function(dg)  {
               if(dg.Key=="DidNotIdentify")
               {
+                //Adding dummy value to make the bar visible on the plot
                 return y(dg.Value+20);
               }
               else
@@ -368,6 +381,7 @@ function gender_plot(gender,selectedState)
             .attr("height", function(dg) { 
               if(dg.Key=="DidNotIdentify")
               {
+                //Adding dummy value to make the bar visible on the plot
                 return gheight - y(dg.Value+20);
               }
               else
@@ -387,6 +401,7 @@ function gender_plot(gender,selectedState)
               return gen_tooltip.style("visibility", "hidden");
             });
 
+  //Adding title
   svg_gender.append("text")
             .text("Gender")
             .attr("x", 410)
@@ -403,6 +418,7 @@ function gender_plot(gender,selectedState)
 
 }
 
+//Plot for ethnicity distribution
 function ethnicity_plot(eth,selectedState)
 {
   let eth_features = ["AmerIndian","Asian","Black","Hawaiian","White","Hispanic"]
@@ -410,6 +426,7 @@ function ethnicity_plot(eth,selectedState)
   let eval=[]
   for(let i=0;i<6;i++)
   {
+    //Creating a dictionary of ehtnicity counts
     const etemp = {"Key": Object.keys(eth[selectedState])[i], "Value": parseInt(Object.values(eth[selectedState])[i]) }
     if(etemp.Value!==0)
     {
@@ -420,6 +437,7 @@ function ethnicity_plot(eth,selectedState)
   let svg_eth = d3.select("#viz2");
   d3.selectAll("#viz2 > *").remove(); 
 
+  //Creating tooltip
   let eth_tooltip = d3.select("body")
                       .append("div")
                       .style("position", "absolute")
@@ -432,13 +450,14 @@ function ethnicity_plot(eth,selectedState)
                       .style("border-radius", "10px")
                       .style("padding", "15px")
                       .text("a simple tooltip");
-
+                    
   let radialScale = d3.scaleLinear()
                       .domain([0,10])
                       .range([0,90]);
 
   let ticks = [1,2,4,6,8,10];
 
+  //Creating circles for the plot
   ticks.forEach(t =>
     svg_eth.append("circle")
            .attr("cx", 180)
@@ -447,6 +466,7 @@ function ethnicity_plot(eth,selectedState)
            .attr("stroke", "gray")
            .attr("r", radialScale(t))
   );
+
   function angleToCoordinate(angle, value){
     let x = Math.cos(angle) * radialScale(value);
     let y = Math.sin(angle) * radialScale(value);
@@ -459,7 +479,7 @@ function ethnicity_plot(eth,selectedState)
     let line_coordinate = angleToCoordinate(angle, 10);
     let label_coordinate = angleToCoordinate(angle, 10.5);
 
-    //draw axis line
+    //Draw axis line
     svg_eth.append("line")
            .attr("x1", 180)
            .attr("y1", 110)
@@ -467,7 +487,7 @@ function ethnicity_plot(eth,selectedState)
            .attr("y2", line_coordinate.y)
            .attr("stroke","black");
 
-    //draw axis label
+    //Creating and positioning axis label for each individual label
     if(ft_name=="Black")
     {
       svg_eth.append("text")
@@ -584,6 +604,7 @@ function ethnicity_plot(eth,selectedState)
 
   let colors = ["#bc2a66"];
 
+  //Mapping data values to ticks
   function ethval_pos(value){
     let tick_pos = [1,2,4,6,8,10]
     let sort_eval = eval;
@@ -591,6 +612,7 @@ function ethnicity_plot(eth,selectedState)
     return tick_pos[sort_eval.indexOf(value)]
   }
 
+  //Creating the path for plot
   function getPathCoordinates(data_point){
     let coordinates = [];
     for (var i = 0; i < Object.keys(data_point).length; i++){
@@ -606,7 +628,7 @@ function ethnicity_plot(eth,selectedState)
   let color = colors;
   let coordinates = getPathCoordinates(d);
 
-  //draw the path element
+  //Draw the path element
   svg_eth.append("path")
          .datum(coordinates)
          .attr("d",line)
@@ -615,7 +637,8 @@ function ethnicity_plot(eth,selectedState)
          .attr("fill", color)
          .attr("stroke-opacity", 1)
          .attr("opacity", 0.8);
-
+  
+  //Creating a line for Viz separation
   svg_eth.append("line")
          .attr("x1", 0)
          .attr("y1", 225)
@@ -624,6 +647,7 @@ function ethnicity_plot(eth,selectedState)
          .attr("stroke","black")
          .attr("stroke-width","3");
 
+  //Adding plot title       
   svg_eth.append("text")
          .text("Ethnicity")
          .attr("x", 400)
@@ -638,9 +662,9 @@ function ethnicity_plot(eth,selectedState)
 
 }
 
+//Plot for disability distribution
 function disability_plot(disab, selectedState)
 {
-  let sorted_disab = Object.entries(disab[selectedState]).sort((a,b) => b[1]-a[1])
   let dis_data = []
   let dval=[]
   let disx = [155,65,255,155,205]
@@ -648,6 +672,7 @@ function disability_plot(disab, selectedState)
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
   for(let i=0;i<5;i++)
   {
+    //Creating a dictionary of disability distribution counts
     const dtemp = {"Key": Object.keys(disab[selectedState])[i], "Value": Object.values(disab[selectedState])[i], "X": disx[i], "Y": disy[i] }
     if(dtemp.Value!==0)
     {
@@ -655,10 +680,11 @@ function disability_plot(disab, selectedState)
       dval.push(Object.values(disab[selectedState])[i])
     }
   }
-  console.log(dis_data)
+
   let svg_dis = d3.select("#viz1");
   d3.selectAll("#viz1 > *").remove(); 
 
+  //Creating tooltip
   let dis_tooltip = d3.select("body")
                       .append("div")
                       .style("position", "absolute")
@@ -672,6 +698,7 @@ function disability_plot(disab, selectedState)
                       .style("padding", "15px")
                       .text("a simple tooltip");
 
+  //Creating circles
   svg_dis.selectAll("circle")
       .data(dis_data)
       .enter()
@@ -682,6 +709,7 @@ function disability_plot(disab, selectedState)
         return Math.sqrt(dd.Value)
       })
       .attr("fill", function(dd) {
+        //Color coding the circles based on the value
         let sort_dval = dval;
         sort_dval.sort(function(a, b){return b - a});
         return dis_color[sort_dval.indexOf(dd.Value)];
@@ -720,6 +748,7 @@ function disability_plot(disab, selectedState)
         return dis_tooltip.style("visibility", "hidden");
       });
 
+  //Creating plot title
   svg_dis.append("text")
         .text("Disability")
         .attr("x", 390)
@@ -732,6 +761,7 @@ function disability_plot(disab, selectedState)
         .attr("y",80)
         .style("font","30px times");
 
+  //Creating legends
   svg_dis.append("circle")
         .attr("cx",370)
         .attr("cy",130)
@@ -824,6 +854,8 @@ function disability_plot(disab, selectedState)
           .style("font-size", "15px")
           .attr("alignment-baseline","middle")
   }
+
+  //Creating line to separate Viz
   svg_dis.append("line")
   .attr("x1", 0)
   .attr("y1", 235)
