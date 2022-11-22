@@ -45,91 +45,70 @@
 /* For visualization-1 */
 
 #visual1{
-    padding: 14px 16px;
-    height: 600px;
+    padding: 10px 10px;
+    height: 670px;
     align-items: center ;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 50px;
+    margin-top: 25px;
     background-color: #A5C9CA;
-    background: rgba(165, 201, 202, 0.7);
+    background: rgba(129, 197, 199, 0.7);
   }
 
-#textColumn{
-  height: 600px;
-  background-color: #395B64;
-  opacity: 0.7;
-  align-items: center ;
-}
-
-#textColumn h2{
+#visual1 h2{
   font-size: 25px;
   font-family: 'Quicksand', sans-serif ;
   text-align: center;
-  color: #e9f4f1;
+  color: #2C3333;
 }
 
-#textColumn p{
-  font-size: 20px;
-  font-family: 'Quicksand', sans-serif ;
-  text-align: center;
-  color: #e9f4f1;
+
+#textColumn{
+  height: 670px;
+  background-color: #3b5e68;
+  opacity: 0.85;
+  align-items: center ;
 }
+
 
 /* For visualization-2 */
 
 #visual2{
-    padding: 14px 16px;
+    padding: 10px 10px;
     height: 600px;
     align-items: center ;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: #A5C9CA;
-    background: rgba(165, 201, 202, 0.7);
+    background: rgba(129, 197, 199, 0.7);
   }
-/* For visualization-1 on page 2 */
-  #morevisual1{
-    padding: 14px 16px;
-    height: 600px;
+/* For page 2 */
+  #moreinfo{
+    padding: 10px 10px;
+    height: 1170px;
     align-items: center ;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 50px;
+    margin-top: 25px;
     background-color: #A5C9CA;
-    background: rgba(165, 201, 202, 0.7);
+    background: rgba(129, 197, 199, 0.7);
   }
 
-  #morevisual1 label{
-    font-size: 18px;
+  #moreinfo h2{
+    font-size: 25px;
     font-family: 'Quicksand', sans-serif ;
-    color: #070808;
+    text-align: center;
+    color: #2C3333;
+  }
+  
+  #moreinfo p{
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif ;
+    text-align: left;
+    color: #2C3333;
+  }
+  #moreinfo ol{
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif ;
+    text-align: left;
+    color: #2C3333;
   }
 
-  #morevisual1 select{
-    border:none;
-    background-color: #395B64;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    opacity: 0.8;
-    border-radius:5px;
-    color: #ddd;
-    font-size: 15px;
+  #moreinfo ul{
+    list-style-type: square;
   }
-
-  .clear {
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    background-color: #2C3333;
-    color: #ddd;
-    opacity: 0.8;
-    border:none;
-    margin-left: 20px;
-    border-radius:5px;
-    font-size: 15px;
-  }
-
