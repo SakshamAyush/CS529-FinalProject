@@ -667,6 +667,7 @@ function disability_plot(disab, selectedState)
 {
   let dis_data = []
   let dval=[]
+  let disb_total = 0
   let disx = [155,65,255,155,205]
   let disy = [170,100,100,40,160]
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
@@ -678,6 +679,7 @@ function disability_plot(disab, selectedState)
     {
       dis_data.push(dtemp)
       dval.push(Object.values(disab[selectedState])[i])
+      disb_total = disb_total + Object.values(disab[selectedState])[i]
     }
   }
 
@@ -738,7 +740,7 @@ function disability_plot(disab, selectedState)
             return "No Impairments"
           }
         }
-        dis_tooltip.html("<b>Disability Type: </b>"+getKey(dd.Key) +"</br>"+"<b>Count: </b>"+dd.Value);
+        dis_tooltip.html("<b>Disability Type: </b>"+getKey(dd.Key) +"</br>"+"<b>Count: </b>"+dd.Value +"</br>"+"<b>Percentage: </b>"+((dd.Value*100)/disb_total).toFixed(2)+"%");
         return dis_tooltip.style("visibility", "visible");
       } )
      .on('mousemove',function(d){
@@ -776,7 +778,7 @@ function disability_plot(disab, selectedState)
   svg_dis.append("text")
         .attr("x", 390)
         .attr("y", 130)
-        .text("Congitive Impairments")
+        .text("Cognitive Impairments")
         .style("font-size", "15px")
         .attr("alignment-baseline","middle")
 
