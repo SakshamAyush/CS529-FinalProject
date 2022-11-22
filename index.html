@@ -35,14 +35,45 @@
          </div>
         
     </div>
-    <div class="container" id="visual2">
-        <svg id="my_dataviz" height=400 width=600></svg>
-        <div id="radio">
-        <input type="radio" id="radio1" name="radio" value="1" checked="checked" onclick="scatter(this.value)" /><label for="radio1">Sensory/Communicative Impairments</label>
-        <input type="radio" id="radio2" name="radio" value="2" onclick="scatter(this.value)" /><label for="radio2">Physical Impairments</label>
-        <input type="radio" id="radio3" name="radio" value="3" onclick="scatter(this.value)"/><label for="radio3">Cognitive Impairments</label>
-        <input type="radio" id="radio4" name="radio" value="4" onclick="scatter(this.value)"/><label for="radio4">Mental Impairments</label>
+
+    <style>
+
+    div#plots {
+        margin-bottom: 5px;
+    }
+
+    div#scatterplot, div#heatchart {
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+    }
+
+    div#scatterContainer, div#heatchartContainer {
+        float: left;
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    </style>
+        <div class="container" id="visual2">
+            <div id="plots">
+                <div id="scatterContainer">
+                    <div id="scatterplot"></div>
+                </div>
+    
+                <div id="heatchartContainer">
+                     <div id="heatchart"></div>
+                </div>           
+            </div>
+
+            <div id="radio">
+                <input type="radio" id="radio1" name="radio" value="1" checked="checked" onclick="scatter(this.value)" /><label for="radio1">Sensory/Communicative Impairments</label>
+                <br>
+                <input type="radio" id="radio2" name="radio" value="2" onclick="scatter(this.value)" /><label for="radio2">Physical Impairments</label>
+                <br>
+                <input type="radio" id="radio3" name="radio" value="3" onclick="scatter(this.value)"/><label for="radio3">Cognitive Impairments</label><br>
+                <input type="radio" id="radio4" name="radio" value="4" onclick="scatter(this.value)"/><label for="radio4">Mental Impairments</label>
+            </div>
         </div>
-    </div>
 
 </body>

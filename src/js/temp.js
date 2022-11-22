@@ -55,7 +55,7 @@ scatter = async (type) => {
     //console.log(finalData.slice(0, 5))
     //console.log(finalData[1].HourlyWage)
 
-    let numPoints = finalData.length
+    var numPoints = finalData.length
     //console.log(numPoints)
     size = 300
     numRows = 16,
@@ -66,12 +66,12 @@ scatter = async (type) => {
     cells = null,
     color = d3.interpolateRgb("#fff", "#063")
 
-    let getEmptyCells = function() {
-    let emptyCells = [];
-        for (let rowNum = 0; rowNum < numRows; rowNum++) {
+    var getEmptyCells = function() {
+    var emptyCells = [];
+        for (var rowNum = 0; rowNum < numRows; rowNum++) {
             emptyCells.push([]);
-            let row = emptyCells[emptyCells.length - 1];
-            for (let colNum = 0; colNum < numCols; colNum++) {
+            var row = emptyCells[emptyCells.length - 1];
+            for (var colNum = 0; colNum < numCols; colNum++) {
                 row.push({
                     row: rowNum,
                     col: colNum,
@@ -83,9 +83,9 @@ scatter = async (type) => {
         return emptyCells;
     };
 
-    let clearCells = function() {
-        for (let rowNum = 0; rowNum < numRows; rowNum++) {
-            for (let colNum = 0; colNum < numCols; colNum++) {
+    var clearCells = function() {
+        for (var rowNum = 0; rowNum < numRows; rowNum++) {
+            for (var colNum = 0; colNum < numCols; colNum++) {
                 cells[rowNum][colNum].density = 0;
                 cells[rowNum][colNum].points = [];
             }
@@ -93,7 +93,7 @@ scatter = async (type) => {
     };
     //console.log("hi")
 
-    let parseData = function() {
+    var parseData = function() {
     data = [];
 
     if (cells === null) {
@@ -103,8 +103,8 @@ scatter = async (type) => {
         clearCells();
     }
 
-    let x, y, col, row;
-    for (let i = 0; i < numPoints; i++) {
+    var x, y, col, row;
+    for (var i = 0; i < numPoints; i++) {
         x = finalData[i].HourlyWage;
         y = finalData[i].HoursWorked;
         col = Math.min(Math.floor(x  * numCols), numCols - 1);
@@ -123,36 +123,39 @@ scatter = async (type) => {
     }
     };
 
-    let margin = {top: 10, right: 30, bottom: 30, left: 60},
+var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
-    let createScatterplot = function() {
-        const xLabel = 'Hourly Wage';
-        const yLabel = 'Hours Worked in a Week';
+var createScatterplot = function() {
+     
 
-        let scatterplot = d3.select("div#scatterplot")
-            .append("svg:svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
 
-        const innerWidth = width - margin.left - margin.right;
-        const innerHeight = height - margin.top - margin.bottom;
-        const g = scatterplot.append('g')
-            .attr('transform', `translate(${margin.left},${margin.top})`);
-        const xAxisG = g.append('g')
-            .attr('transform', `translate(0, ${innerHeight})`);
-        const yAxisG = g.append('g');
+    const xLabel = 'Hourly Wage';
+    const yLabel = 'Hours Worked in a Week';
 
-        xAxisG.append('text')
+    var scatterplot = d3.select("div#scatterplot")
+    .append("svg:svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+      const innerWidth = width - margin.left - margin.right;
+      const innerHeight = height - margin.top - margin.bottom;
+    const g = scatterplot.append('g')
+          .attr('transform', `translate(${margin.left},${margin.top})`);
+      const xAxisG = g.append('g')
+          .attr('transform', `translate(0, ${innerHeight})`);
+      const yAxisG = g.append('g');
+
+      xAxisG.append('text')
           .attr('class', 'axis-label')
           .attr('x', innerWidth / 2 -70)
           .attr('y', 57)
           .text(xLabel);
 
-        yAxisG.append('text')
+      yAxisG.append('text')
           .attr('class', 'axis-label')
           .attr('x', -innerHeight / 2)
           .attr('y', -85)
@@ -160,19 +163,19 @@ scatter = async (type) => {
           .style('text-anchor', 'middle')
           .text(yLabel);
 
-        let x = d3.scaleLinear()
-            .domain([0, 100])
-            .range([ 0, width ]);
-        scatterplot.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+    var x = d3.scaleLinear()
+    .domain([0, 100])
+    .range([ 0, width ]);
+  scatterplot.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
 
-    // Add Y axis
-    let y = d3.scaleLinear()
-        .domain([0, 75])
-        .range([ height, 0]);
-    scatterplot.append("g")
-        .call(d3.axisLeft(y));
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 75])
+    .range([ height, 0]);
+  scatterplot.append("g")
+    .call(d3.axisLeft(y));
 
     scatterplot.append('g')
     .selectAll("dot")
@@ -183,27 +186,27 @@ scatter = async (type) => {
       .attr("cy", function (d) { return y(d.y); } )
       .attr("r", 1.5)
       .style("fill", "#bc2a66")
-    };
+};
 
-    let createHeatchart = function() {
-        let min = 999;
-        let max = -999;
-        let l;
+var createHeatchart = function() {
+    var min = 999;
+    var max = -999;
+    var l;
 
-        for (let rowNum = 0; rowNum < cells.length; rowNum++) {
-            for (let colNum = 0; colNum < numCols; colNum++) {
-                l = cells[rowNum][colNum].points.length;
+    for (var rowNum = 0; rowNum < cells.length; rowNum++) {
+        for (var colNum = 0; colNum < numCols; colNum++) {
+            l = cells[rowNum][colNum].points.length;
 
-                if (l > max) {
-                    max = l;
-                }
-                if (l < min) {
-                    min = l;
-                }
+            if (l > max) {
+                max = l;
+            }
+            if (l < min) {
+                min = l;
             }
         }
+    }
 
-    let heatchart = d3.select("div#heatchart")
+    var heatchart = d3.select("div#heatchart")
                         .append("svg:svg")
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom);
@@ -227,7 +230,7 @@ scatter = async (type) => {
 };
 
 
-let init = function() {
+var init = function() {
     parseData();
     createScatterplot();
     createHeatchart();
