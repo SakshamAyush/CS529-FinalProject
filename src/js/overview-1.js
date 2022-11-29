@@ -668,8 +668,8 @@ function disability_plot(disab, selectedState)
   let dis_data = []
   let dval=[]
   let disb_total = 0
-  let disx = [155,65,255,155,205]
-  let disy = [170,100,100,40,160]
+  let disx = [155,65,275,155,155]
+  let disy = [230,135,135,55,145]
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
   for(let i=0;i<5;i++)
   {
@@ -708,8 +708,9 @@ function disability_plot(disab, selectedState)
       .attr("cx", function(dd) {return dd.X})
       .attr("cy", function(dd) {return dd.Y})
       .attr("r", function(dd) {
-        return Math.sqrt(dd.Value)
+        return Math.pow(dd.Value,0.45)
       })
+      .style("stroke","black")
       .attr("fill", function(dd) {
         //Color coding the circles based on the value
         let sort_dval = dval;
@@ -860,9 +861,9 @@ function disability_plot(disab, selectedState)
   //Creating line to separate Viz
   svg_dis.append("line")
   .attr("x1", 0)
-  .attr("y1", 235)
+  .attr("y1", 285)
   .attr("x2", 540)
-  .attr("y2", 235)
+  .attr("y2", 285)
   .attr("stroke","black")
   .attr("stroke-width","3");
 }

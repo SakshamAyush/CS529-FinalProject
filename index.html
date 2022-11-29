@@ -8,7 +8,7 @@
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script src="https://unpkg.com/topojson@3"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<body style="background-image: url(src/background2.jpg); background-position: center; background-size: cover;">
+<body>
 <script src="src/js/overview-1.js"></script>
 <script src="src/js/overview-3.js"></script>
     <div class="banner">
@@ -27,10 +27,18 @@
          </div>
          
          <div id="textColumn" style="width: 38.5%; float:right">
-            <svg id = 'viz1' style=" width: 540; height: 235; "></svg>
+            <svg id = 'viz1' style=" width: 540; height: 285; "></svg>
             <svg id = 'viz2' style=" width: 540; height: 225; margin-top:10;"></svg>
             <svg id = 'viz3' style=" width: 540; height: 200; "></svg>    
          </div>
+
+         <div class="container" id="separator">
+            <svg class="arrows" onClick="document.getElementById('visual2').scrollIntoView()">
+                <path class="a1" d="M0 0 L30 30 L60 0"></path>
+                <path class="a2" d="M0 20 L30 50 L60 20"></path>
+            </svg>
+    
+        </div>
         
     </div>
 
