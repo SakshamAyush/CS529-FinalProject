@@ -4,7 +4,7 @@
 	<title>Data Visualisation Final Project</title>
 	<link href='src/style.css' rel='stylesheet'>     
 </head>  
-<body style="background-image: url(src/background.jpg); background-position: center; background-size: cover;">
+<body style="background-image: url(src/background2.jpg); background-position: center; background-size: cover;">
 
 	<div class="banner">
     	<div class="banner_content">
@@ -12,48 +12,53 @@
     	</div>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="index.html" >Overview</a>
-        <a href="index-02.html" class="active">More Visualizations</a>
+        <a href="index.html" >Visualizations</a>
+        <a href="index-02.html" class="active">More Information</a>
     </div>
-    <div class="container" id="morevisual1">
-        <label for="filter1">Choose filters:  </label>
-        <select name="filter1" id="filter1">
-            <option selected disabled>Select State</option>
-            <option value="illinois">Illinois</option>
-            <option value="newyork">New York</option>
-            <option value="washington">Washington</option>
-            <option value="texas">Texas</option>
-        </select>
-        <select name="filter2" id="filter2">
-            <option selected disabled>Select Disability Type</option>
-            <option value="cognitive">Cognitive Impairments</option>
-            <option value="sensory">Sensory/Communicative Impairments</option>
-            <option value="physical">Physical Impairments</option>
-            <option value="mental">Mental Impairments</option>
-            <option value="none">No Impairments</option>
-        </select>
-        <select name="filter3" id="filter3">
-            <option selected disabled>Select Ethnicity/Race</option>
-            <option value="amindian">American Indian</option>
-            <option value="asian">Asian</option>
-            <option value="black">Black</option>
-            <option value="hawaiian">Hawaiian</option>
-            <option value="white">White</option>
-            <option value="hispanic">Hispanic</option>
-        </select>
-          
-        <input type="button" class="clear" onclick="myFunction()"
-               value="Clear All" />
-  
-        <script>
-            function myFunction() {
-                let dropDown1 = document.getElementById("filter1");
-                dropDown1.selectedIndex = 0;
-                let dropDown2 = document.getElementById("filter2");
-                dropDown2.selectedIndex = 0;
-                let dropDown3 = document.getElementById("filter3");
-                dropDown3.selectedIndex = 0;
-            }
-        </script>
+    <div class="container" id="moreinfo">
+        <h2><u>Vocational Rehabilitation</u></h2>
+        <p> 
+            A disability is any condition of the body or mind (impairment) that makes it more difficult for the person with the condition to do certain activities (activity limitation) and interact with the world around them (participation restrictions).
+            Although people with disabilities sometimes refer to a single population, this is actually a diverse group of people with a wide range of needs.</br>
+            Vocational Rehab is a process that enables persons with functional, psychological, developmental, cognitive, and emotional disabilities, impairments, or health disabilities to overcome barriers to accessing, maintaining, or returning to employment or other useful occupation.
+        </p>
+        <h2><u>Disability Categories</u></h2>
+        <p>
+            We have four major categories for disabilities:</br>
+            <ol>
+                <b><li>Sensory Impairments</li></b>
+                    <p>This contains the following impairment types:</p>
+                    <ul>
+                        <li>Blindness</li>
+                        <li>Other Visual Impairments</li>
+                        <li>Deafness, Primary Communication Visual</li>
+                        <li>Deafness, Primary Communication Auditory</li>
+                        <li>Hearing Loss, Primary Communication Visual</li>
+                        <li>Hearing Loss, Primary Communication Auditory</li>
+                        <li>Other Hearing Impairments (Tinnitus, Meniere's Disease, hyperacusis, etc.)</li>
+                        <li>Deaf-Blindness</li>
+                        <li>Communicative Impairments (expressive/receptive)</li></br>
+                    </ul>
+                <b><li>Physical Impairments</li></b>
+                    <p>This contains the following impairment types:</p>
+                    <ul>
+                        <li>Mobility Orthopedic/Neurological Impairments</li>
+                        <li>Manipulation/Dexterity Orthopedic/Neurological Impairments</li>
+                        <li>Both Mobility and Manipulation/Dexterity Orthopedic/Neurological Impairments</li>
+                        <li>Other Orthopedic Impairments (e.g., limited range of motion)</li>
+                        <li>Respiratory Impairments</li>
+                        <li>General Physical Debilitation (e.g., fatigue, weakness, pain, etc.)</li>
+                        <li>Other Physical Impairments (not listed above)</li></br>
+                    </ul>
+                <b><li>Mental Impairments</li></b>
+                    <p>This contains the following impairment types:</p>
+                    <ul>
+                        <li>Psychosocial Impairments (e.g., interpersonal and behavioral impairments, difficulty coping)</li>
+                        <li>Other Mental Impairments</li></br>
+                    </ul>
+                <b><li>Cognitive Impairments</li></b>
+                    <p>These include impairments involving learning, thinking, processing information and concentration</p>
+              </ol>
+        </p>
     </div>
 </body>
