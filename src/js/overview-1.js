@@ -14,8 +14,10 @@ choropleth = async () => {
   gender = {}
   eth = {}
   disab = {}
+
   for(let i=0; i<data.length; i++)
   {
+    
     //Getting counts for each state
     if(temp.hasOwnProperty(data[i].AgencyCode))
     {
@@ -168,6 +170,7 @@ choropleth = async () => {
 
   }
 
+
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
   //Adding US map data
@@ -233,7 +236,7 @@ choropleth = async () => {
       disability_plot(disab, selectedState)
       })
      .on('mouseover',function(d){
-        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>VR Applicants: </b>"+d.properties.value);
+        tooltip.html("<b>State: </b>"+d.properties.NAME+"</br>"+"<b>VR Applicant Count: </b>"+d.properties.value);
         return tooltip.style("visibility", "visible");
       } )
      .on('mousemove',function(d){
@@ -289,7 +292,12 @@ choropleth = async () => {
 			.attr("transform", "translate(41,10)")
 			.call(yAxis);
 
-
+  let svg_text = d3.select("#viz2");
+  svg_text.append("text")
+          .text("Select a state to get details")
+          .attr("x", 150)
+          .attr("y",90)
+          .style("font","25px times");
 
 
 }
@@ -312,7 +320,7 @@ function gender_plot(gender,selectedState)
     }
     
   }
-  var gmargin = {top: 30, right: 40, bottom: 70, left:65}
+  let gmargin = {top: 30, right: 40, bottom: 70, left:65}
   let gwidth = 440 
   let gheight = 200-30
   let svg_gender = d3.select("#viz3")
@@ -342,7 +350,7 @@ function gender_plot(gender,selectedState)
             .attr("transform", "translate(0," + gheight + ")")
             .call(d3.axisBottom(x));
 
-  var y = d3.scaleLinear()
+  let y = d3.scaleLinear()
             .domain([0, Math.max(...gval)+100])
             .range([ gheight, 10]);
 
@@ -414,6 +422,13 @@ function gender_plot(gender,selectedState)
             .attr("y",110)
             .style("font","30px times");
 
+  svg_gender.append("text")
+            .text("(For "+selectedState+")")
+            .attr("x", 450)
+            .attr("text-anchor", "middle")
+            .attr("y",130)
+            .style("font","20px times");
+
 
 
 }
@@ -473,7 +488,7 @@ function ethnicity_plot(eth,selectedState)
     return {"x": 180 + x, "y": 110 - y};
   }
 
-  for (var i = 0; i < Object.keys(eth[selectedState]).length; i++) {
+  for (let i = 0; i < Object.keys(eth[selectedState]).length; i++) {
     let ft_name = Object.keys(eth[selectedState])[i];
     let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(eth[selectedState]).length);
     let line_coordinate = angleToCoordinate(angle, 10);
@@ -615,7 +630,7 @@ function ethnicity_plot(eth,selectedState)
   //Creating the path for plot
   function getPathCoordinates(data_point){
     let coordinates = [];
-    for (var i = 0; i < Object.keys(data_point).length; i++){
+    for (let i = 0; i < Object.keys(data_point).length; i++){
         let ft_name = Object.keys(data_point)[i];
         let angle = (Math.PI / 2) + (2 * Math.PI * i / Object.keys(data_point).length);
         coordinates.push(angleToCoordinate(angle, ethval_pos(Object.values(data_point)[i])));
@@ -660,6 +675,13 @@ function ethnicity_plot(eth,selectedState)
          .attr("y",110)
          .style("font","30px times");
 
+  svg_eth.append("text")
+         .text("(For "+selectedState+")")
+         .attr("x", 450)
+         .attr("text-anchor", "middle")
+         .attr("y",130)
+         .style("font","20px times");
+
 }
 
 //Plot for disability distribution
@@ -668,8 +690,8 @@ function disability_plot(disab, selectedState)
   let dis_data = []
   let dval=[]
   let disb_total = 0
-  let disx = [155,65,255,155,205]
-  let disy = [170,100,100,40,160]
+  let disx = [170,65,275,170,170]
+  let disy = [230,140,140,55,145]
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
   for(let i=0;i<5;i++)
   {
@@ -708,8 +730,9 @@ function disability_plot(disab, selectedState)
       .attr("cx", function(dd) {return dd.X})
       .attr("cy", function(dd) {return dd.Y})
       .attr("r", function(dd) {
-        return Math.sqrt(dd.Value)
+        return Math.pow(dd.Value,0.45)
       })
+      .style("stroke","black")
       .attr("fill", function(dd) {
         //Color coding the circles based on the value
         let sort_dval = dval;
@@ -762,6 +785,13 @@ function disability_plot(disab, selectedState)
         .attr("x", 380)
         .attr("y",80)
         .style("font","30px times");
+
+  svg_dis.append("text")
+        .text("(For "+selectedState+")")
+        .attr("x", 450)
+        .attr("text-anchor", "middle")
+        .attr("y",100)
+        .style("font","20px times");
 
   //Creating legends
   svg_dis.append("circle")
@@ -860,9 +890,9 @@ function disability_plot(disab, selectedState)
   //Creating line to separate Viz
   svg_dis.append("line")
   .attr("x1", 0)
-  .attr("y1", 235)
+  .attr("y1", 285)
   .attr("x2", 540)
-  .attr("y2", 235)
+  .attr("y2", 285)
   .attr("stroke","black")
   .attr("stroke-width","3");
 }

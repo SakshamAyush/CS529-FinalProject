@@ -293,8 +293,8 @@ heatmap = function(dat){
         cells[row][col].points.push(data[data.length - 1]);
     }
 
-    console.log(cells)
-    console.log(data)
+    //console.log(cells)
+    //console.log(data)
 
     let min = 999;
     let max = -999;
