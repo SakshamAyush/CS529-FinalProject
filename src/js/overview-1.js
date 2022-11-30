@@ -14,8 +14,10 @@ choropleth = async () => {
   gender = {}
   eth = {}
   disab = {}
+
   for(let i=0; i<data.length; i++)
   {
+    
     //Getting counts for each state
     if(temp.hasOwnProperty(data[i].AgencyCode))
     {
@@ -168,6 +170,7 @@ choropleth = async () => {
 
   }
 
+
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
   //Adding US map data
@@ -289,7 +292,12 @@ choropleth = async () => {
 			.attr("transform", "translate(41,10)")
 			.call(yAxis);
 
-
+  let svg_text = d3.select("#viz2");
+  svg_text.append("text")
+          .text("Select a state to get details")
+          .attr("x", 150)
+          .attr("y",90)
+          .style("font","25px times");
 
 
 }
@@ -668,8 +676,8 @@ function disability_plot(disab, selectedState)
   let dis_data = []
   let dval=[]
   let disb_total = 0
-  let disx = [155,65,275,155,155]
-  let disy = [230,135,135,55,145]
+  let disx = [170,65,275,170,170]
+  let disy = [230,140,140,55,145]
   let dis_color = ["#bc2a66","#d64c86","#e382aa","#f1c1d5","#fbeef4"]
   for(let i=0;i<5;i++)
   {
