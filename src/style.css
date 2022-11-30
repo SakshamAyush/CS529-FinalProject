@@ -1,19 +1,31 @@
 /*For banner */
 .banner {
     background: #2C3333;
-    height: 70px;
+    height: 50px;
   }
   
   .banner_content {
       color: #E7F6F2;
-      padding: 16px;
+      padding: 10px;
       max-width: 1000px;
       margin: 0 auto;
       text-align: center;
-      font-size: 30px;
+      font-size: 25;
       flex-grow: 1;
       font-family: 'Quicksand', sans-serif ;
   }
+
+  
+  .banner_content2 {
+    color: #E7F6F2;
+    padding: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+    flex-grow: 1;
+    font-family: 'Quicksand', sans-serif ;
+}
   
   /*For navigation bar */
 .topnav {
@@ -26,7 +38,7 @@
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px;
     text-decoration: none;
     font-size: 17px;
     font-family: 'Quicksand', sans-serif ;
@@ -45,12 +57,12 @@
 /* For visualization-1 */
 
 #visual1{
-    padding: 10px 10px;
-    height: 670px;
+    padding: 0px 10px;
+    height: 710px;
     align-items: center ;
-    margin-top: 25px;
-    background-color: #A5C9CA;
-    background: rgba(129, 197, 199, 0.7);
+    margin-top: 5px;
+    background-color: #000000;
+    background: rgba(227, 227, 227, 0.85);
   }
 
 #visual1 h2{
@@ -62,31 +74,43 @@
 
 
 #textColumn{
-  height: 670px;
-  background-color: #3b5e68;
+  height: 710px;
+  background-color: #c1c1c1;
   opacity: 0.85;
   align-items: center ;
 }
 
 
+.arrows {
+	width: 58px;
+	height: 62px;
+    display: block; margin: auto;
+	bottom: 10px;
+}
+
+.arrows path {
+	stroke: #0197ae;
+	fill: transparent;
+	stroke-width: 1px;	
+
+}
 /* For visualization-2 */
 
 #visual2{
     padding: 10px 10px;
-    height: 600px;
+    height: 810px;
     align-items: center ;
-    margin-top: 30px;
-    background-color: #A5C9CA;
-    background: rgba(129, 197, 199, 0.7);
+    margin-top: 10px;
+    background: rgba(227, 227, 227, 0.85);
   }
 /* For page 2 */
   #moreinfo{
     padding: 10px 10px;
     height: 1170px;
     align-items: center ;
-    margin-top: 25px;
+    margin-top: 10px;
     background-color: #A5C9CA;
-    background: rgba(129, 197, 199, 0.7);
+    background: rgba(227, 227, 227, 0.85);
   }
 
   #moreinfo h2{
