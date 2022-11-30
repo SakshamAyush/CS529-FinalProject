@@ -422,6 +422,13 @@ function gender_plot(gender,selectedState)
             .attr("y",110)
             .style("font","30px times");
 
+  svg_gender.append("text")
+            .text("(For "+selectedState+")")
+            .attr("x", 450)
+            .attr("text-anchor", "middle")
+            .attr("y",130)
+            .style("font","20px times");
+
 
 
 }
@@ -668,6 +675,13 @@ function ethnicity_plot(eth,selectedState)
          .attr("y",110)
          .style("font","30px times");
 
+  svg_eth.append("text")
+         .text("(For "+selectedState+")")
+         .attr("x", 450)
+         .attr("text-anchor", "middle")
+         .attr("y",130)
+         .style("font","20px times");
+
 }
 
 //Plot for disability distribution
@@ -771,6 +785,13 @@ function disability_plot(disab, selectedState)
         .attr("x", 380)
         .attr("y",80)
         .style("font","30px times");
+
+  svg_dis.append("text")
+        .text("(For "+selectedState+")")
+        .attr("x", 450)
+        .attr("text-anchor", "middle")
+        .attr("y",100)
+        .style("font","20px times");
 
   //Creating legends
   svg_dis.append("circle")
