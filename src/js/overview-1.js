@@ -467,55 +467,80 @@ let circle8 = d3.select("#circle8")
           .attr("width",40)
           .attr("heigth",40)
 
-circle8.append("circle")
-  .attr('cx', 25)
-  .attr('cy', 25)
-  .attr('r', 10)
-  .attr('stroke', 'black')
-  .attr('fill', '#69a3b2')
-  .on("click",function(){
-     exitbar(exitCognitive)
-  });
-
   let circle9 = d3.select("#circle9")
           .attr("width",40)
           .attr("heigth",40)
-
-circle9.append("circle")
-  .attr('cx', 25)
-  .attr('cy', 25)
-  .attr('r', 10)
-  .attr('stroke', 'black')
-  .attr('fill', '#69a3b2')
-  .on("click",function(){
-     exitbar(exitPhysical)
-  });
-
-  let circle10 = d3.select("#circle10")
+let circle10 = d3.select("#circle10")
           .attr("width",40)
           .attr("heigth",40)
-
-circle10.append("circle")
-  .attr('cx', 25)
-  .attr('cy', 25)
-  .attr('r', 10)
-  .attr('stroke', 'black')
-  .attr('fill', '#69a3b2')
-  .on("click",function(){
-     exitbar(exitSensory)
-  });
 
   let circle11 = d3.select("#circle11")
           .attr("width",40)
           .attr("heigth",40)
 
-circle11.append("circle")
+circle8.append("circle")
+  .attr("id", "circleA")
   .attr('cx', 25)
   .attr('cy', 25)
   .attr('r', 10)
   .attr('stroke', 'black')
-  .attr('fill', '#69a3b2')
+  .attr('fill', '#2C3333')
   .on("click",function(){
+    d3.selectAll("#circleB").attr('fill','#2C3333');
+    d3.selectAll("#circleC").attr('fill','#2C3333');
+    d3.selectAll("#circleD").attr('fill','#2C3333');
+    d3.select(this).attr('fill', '#fff');
+     exitbar(exitCognitive)
+  });
+
+
+
+circle9.append("circle")
+  .attr("id", "circleB")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#2C3333')
+  .on("click",function(){
+    d3.selectAll("#circleA").attr('fill','#2C3333');
+    d3.selectAll("#circleC").attr('fill','#2C3333');
+    d3.selectAll("#circleD").attr('fill','#2C3333');
+    d3.select(this).attr('fill', '#fff');
+     exitbar(exitPhysical)
+  });
+
+
+
+circle10.append("circle")
+  .attr("id", "circleC")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#2C3333')
+  .on("click",function(){
+    d3.selectAll("#circleA").attr('fill','#2C3333');
+    d3.selectAll("#circleB").attr('fill','#2C3333');
+    d3.selectAll("#circleD").attr('fill','#2C3333');
+    d3.select(this).attr('fill', '#fff');
+     exitbar(exitSensory)
+  });
+
+
+
+circle11.append("circle")
+  .attr("id", "circleD")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#2C3333')
+  .on("click",function(){
+    d3.selectAll("#circleA").attr('fill','#69a3b2');
+    d3.selectAll("#circleB").attr('fill','#69a3b2');
+    d3.selectAll("#circleC").attr('fill','#69a3b2');
+    d3.select(this).attr('fill', '#fff');
      exitbar(exitMental)
   });
 
@@ -1131,7 +1156,7 @@ function exitbar(exitDisab)
   }
   console.log(exit_data)
   let exitwidth = 690 
-  let exitheight = 400-60
+  let exitheight = 300-60
   let exitmargin = {top: 30, right: 40, bottom: 70, left:65}
   let svg_exit = d3.select("#viz4")
   d3.selectAll("#viz4 > *").remove();
@@ -1200,7 +1225,7 @@ function exitbar(exitDisab)
             .attr("class", "x label")
             .attr("text-anchor", "middle")
             .attr("x", 360)
-            .attr("y", 380)
+            .attr("y", 280)
             .text("Exit Type");
 
 
