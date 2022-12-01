@@ -277,7 +277,7 @@ let scatterPlot = function(data) {
     d3.selectAll("#scatterplot > *").remove();
     let margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 690 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 280 - margin.top - margin.bottom;
 
     const xLabel = 'Hourly Wage';
     const yLabel = 'Hours Worked in a Week';
