@@ -537,9 +537,9 @@ circle11.append("circle")
   .attr('stroke', 'black')
   .attr('fill', '#2C3333')
   .on("click",function(){
-    d3.selectAll("#circleA").attr('fill','#69a3b2');
-    d3.selectAll("#circleB").attr('fill','#69a3b2');
-    d3.selectAll("#circleC").attr('fill','#69a3b2');
+    d3.selectAll("#circleA").attr('fill','#2C3333');
+    d3.selectAll("#circleB").attr('fill','#2C3333');
+    d3.selectAll("#circleC").attr('fill','#2C3333');
     d3.select(this).attr('fill', '#fff');
      exitbar(exitMental)
   });

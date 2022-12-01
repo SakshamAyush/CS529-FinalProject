@@ -338,6 +338,7 @@ parseData1 = async () => {
                 d3.selectAll("#circleH").attr('fill','#2C3333');
                 d3.selectAll("#circleI").attr('fill', '#2C3333');
                 d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -358,6 +359,7 @@ parseData1 = async () => {
                 d3.selectAll("#circleH").attr('fill','#2C3333');
                 d3.selectAll("#circleI").attr('fill', '#2C3333');
                 d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -378,6 +380,7 @@ parseData1 = async () => {
                 d3.selectAll("#circleH").attr('fill','#2C3333');
                 d3.selectAll("#circleI").attr('fill', '#2C3333');
                 d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -398,13 +401,14 @@ parseData1 = async () => {
                 d3.selectAll("#circleG").attr('fill','#2C3333');
                 d3.selectAll("#circleI").attr('fill', '#2C3333');
                 d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
     let circle5 = d3.select("#circle5")
 
     circle5.append("circle")
-            .attr("id", "circleH")
+            .attr("id", "circleI")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
@@ -416,15 +420,16 @@ parseData1 = async () => {
                 d3.selectAll("#circleE").attr('fill','#2C3333');
                 d3.selectAll("#circleF").attr('fill','#2C3333');
                 d3.selectAll("#circleG").attr('fill','#2C3333');
-                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleH").attr('fill', '#2C3333');
                 d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
     let circle6 = d3.select("#circle6")
 
     circle6.append("circle")
-            .attr("id", "circleI")
+            .attr("id", "circleJ")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
@@ -437,14 +442,15 @@ parseData1 = async () => {
                 d3.selectAll("#circleF").attr('fill','#2C3333');
                 d3.selectAll("#circleG").attr('fill','#2C3333');
                 d3.selectAll("#circleH").attr('fill', '#2C3333');
-                d3.selectAll("#circleJ").attr('fill', '#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleK").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
     let circle7 = d3.select("#circle7")
 
     circle7.append("circle")
-            .attr("id", "circleJ")
+            .attr("id", "circleK")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
@@ -458,6 +464,7 @@ parseData1 = async () => {
                 d3.selectAll("#circleG").attr('fill','#2C3333');
                 d3.selectAll("#circleH").attr('fill', '#2C3333');
                 d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
