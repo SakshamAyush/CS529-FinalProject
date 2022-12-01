@@ -20,8 +20,6 @@ parseData1 = async () => {
     
     let raw1 = await d3.csv("Data/final_data.csv");
 
-    //let parseDate = d3.timeParse("%Y-%m-%d");
-
     data1 = raw1.map(d=>({
     'AmericanIndian' : parseInt(d['AmerIndian']),
     'Asian' : parseInt(d['Asian']),
@@ -166,7 +164,7 @@ parseData1 = async () => {
       
     })
     
-    console.log(entryDate.AmericanIndian)
+    //console.log(entryDate.AmericanIndian)
 
     let newEntryDate = {}
     for(let i in entryDate){
@@ -179,7 +177,7 @@ parseData1 = async () => {
         }
     }
     //console.log(newEntryDate)
-    console.log(newEntryDate.AmericanIndian)
+    //console.log(newEntryDate.AmericanIndian)
 
 
     data2.map(i=>{
@@ -308,7 +306,7 @@ parseData1 = async () => {
       
     })
     
-    console.log(exitDate.AmericanIndian)
+    //console.log(exitDate.AmericanIndian)
 
     let newExitDate = {}
     for(let i in exitDate){
@@ -320,7 +318,7 @@ parseData1 = async () => {
             newExitDate[i].push({"Month" : j,"Count" : exitDate[i][j]})
         }
     }
-    console.log(newExitDate.AmericanIndian)
+    //console.log(newExitDate.AmericanIndian)
 
 
     let circle1 = d3.select("#circle1")
@@ -431,9 +429,6 @@ parseData1 = async () => {
                 d3.select(this).attr('fill', '#fff');
             });
 
-    //lineChart(newEntryDate.All)
-   
-
 };
 
 parseData1();
@@ -455,7 +450,6 @@ lineChart = function(data){
             min = data[i].Count
         }
     }
-    //d3.select("#my_dataviz > *").remove();
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 730 
@@ -463,13 +457,6 @@ lineChart = function(data){
 
     // append the svg object to the body of the page
     var svg_line = d3.select("#viz_line1")
-                /*//.append("svg")
-                .attr("width", width )
-                .attr("height", height)
-                .append("g")
-                .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");*/
-
 
     d3.selectAll("#viz_line1> *").remove();
 
@@ -486,7 +473,7 @@ lineChart = function(data){
       .domain([min-Math.round(10/100 * min),max+Math.round(10/100 * max)])
       .range([ height - margin.bottom, margin.top ]);
 
-      svg_line.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+    svg_line.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
 
     svg_line.append("text")
             .attr("class", "y label")
@@ -517,15 +504,15 @@ lineChart = function(data){
         .attr("fill","#232323e8");
 
     svg_line.append("text")
-            .text("Entry")
+            .text("Entry Distribution")
             .attr("x", 550)
-            .attr("y",25)
+            .attr("y", 30)
             .style("font","20px times");
 
     svg_line.append("text")
-            .text("Distribution")
+            .text("by Ethnicity")
             .attr("x", 565)
-            .attr("y",50)
+            .attr("y", 55)
             .style("font","20px times");
 
     console.log(data)
@@ -556,13 +543,6 @@ lineChart1 = function(data){
 
     // append the svg object to the body of the page
     var svg_line1 = d3.select("#viz_line2")
-                /*//.append("svg")
-                .attr("width", width )
-                .attr("height", height)
-                .append("g")
-                .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");*/
-
 
     d3.selectAll("#viz_line2 > *").remove();
 
@@ -579,9 +559,9 @@ lineChart1 = function(data){
       .domain([min-Math.round(10/100 * min),max+Math.round(10/100 * max)])
       .range([ height - margin.bottom, margin.top ]);
 
-      svg_line1.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+    svg_line1.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
 
-      svg_line1.append("text")
+    svg_line1.append("text")
             .attr("class", "y label")
             .attr("text-anchor", "end")
             .attr("x", -145)
@@ -600,14 +580,26 @@ lineChart1 = function(data){
         .y(function(d) { return y(d.Count) })
         )
 
-        svg_line1.selectAll("circle")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx", function(dd) {return x(dd.Month)})
-        .attr("cy", function(dd) {return y(dd.Count)})
-        .attr("r", 5)
-        .attr("fill","#232323e8");
+    svg_line1.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", function(dd) {return x(dd.Month)})
+    .attr("cy", function(dd) {return y(dd.Count)})
+    .attr("r", 5)
+    .attr("fill","#232323e8");
+
+    svg_line1.append("text")
+            .text("Exit Distribution")
+            .attr("x", 550)
+            .attr("y", 30)
+            .style("font","20px times");
+
+    svg_line1.append("text")
+            .text("by Ethnicity")
+            .attr("x", 565)
+            .attr("y", 55)
+            .style("font","20px times");
 
     console.log(data)
 };
