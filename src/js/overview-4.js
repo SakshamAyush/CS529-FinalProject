@@ -1,21 +1,21 @@
 parseData1 = async () => {
 
-    let entryDate = {"All": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
+    let entryDate = {"All": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
                   "AmericanIndian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
-                  "Asian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Black": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Hawaiian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "White":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Hispanic":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}
+                  "Asian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Black": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Hawaiian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "White":{"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Hispanic":{"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0}
                     };
 
-    let exitDate = {"All": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "AmericanIndian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Asian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Black": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Hawaiian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "White":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "Hispanic":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}
+    let exitDate = {"All": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "AmericanIndian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Asian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Black": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Hawaiian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "White":{"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
+                  "Hispanic":{"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0}
                     };
     
     let raw1 = await d3.csv("Data/final_data.csv");
@@ -43,124 +43,124 @@ parseData1 = async () => {
     data2.map(i=>{
         switch(i.entryMonth){
         case "01":
-        entryDate["All"]["1"] += 1 
+        entryDate["All"]["Jan"] += 1 
         entryDate["AmericanIndian"]["Jan"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["1"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["1"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["1"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["1"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["1"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Jan"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Jan"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Jan"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Jan"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Jan"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "02":
-        entryDate["All"]["2"] += 1
+        entryDate["All"]["Feb"] += 1
         entryDate["AmericanIndian"]["Feb"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["2"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["2"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["2"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["2"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["2"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Feb"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Feb"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Feb"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Feb"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Feb"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "03":
-        entryDate["All"]["3"] += 1
+        entryDate["All"]["Mar"] += 1
         entryDate["AmericanIndian"]["Mar"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["3"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["3"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["3"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["3"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["3"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Mar"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Mar"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Mar"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Mar"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Mar"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "04":
-        entryDate["All"]["4"] += 1
+        entryDate["All"]["Apr"] += 1
         entryDate["AmericanIndian"]["Apr"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["4"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["4"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["4"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["4"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["4"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Apr"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Apr"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Apr"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Apr"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Apr"] += i.Hawaiian == 1 ? 1:0
         break;
         
         
         case "05":
-        entryDate["All"]["5"] += 1
+        entryDate["All"]["May"] += 1
         entryDate["AmericanIndian"]["May"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["5"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["5"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["5"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["5"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["5"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["May"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["May"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["May"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["May"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["May"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "06":
-        entryDate["All"]["6"] += 1
+        entryDate["All"]["Jun"] += 1
         entryDate["AmericanIndian"]["Jun"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["6"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["6"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["6"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["6"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["6"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Jun"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Jun"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Jun"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Jun"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Jun"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "07":
-        entryDate["All"]["7"] += 1
+        entryDate["All"]["Jul"] += 1
         entryDate["AmericanIndian"]["Jul"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["7"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["7"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["7"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["7"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["7"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Jul"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Jul"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Jul"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Jul"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Jul"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "08":
-        entryDate["All"]["8"] += 1
+        entryDate["All"]["Aug"] += 1
         entryDate["AmericanIndian"]["Aug"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["8"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["8"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["8"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["8"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["8"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Aug"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Aug"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Aug"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Aug"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Aug"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "09":
-        entryDate["All"]["9"] += 1
+        entryDate["All"]["Sept"] += 1
         entryDate["AmericanIndian"]["Sept"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["9"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["9"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["9"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["9"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["9"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Sept"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Sept"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Sept"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Sept"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Sept"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "10":
-        entryDate["All"]["10"] += 1
+        entryDate["All"]["Oct"] += 1
         entryDate["AmericanIndian"]["Oct"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["10"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["10"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["10"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["10"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["10"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Oct"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Oct"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Oct"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Oct"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Oct"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "11":
-        entryDate["All"]["11"] += 1
+        entryDate["All"]["Nov"] += 1
         entryDate["AmericanIndian"]["Nov"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["11"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["11"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["11"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["11"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["11"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Nov"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Nov"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Nov"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Nov"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Nov"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "12":
-        entryDate["All"]["12"] += 1
+        entryDate["All"]["Dec"] += 1
         entryDate["AmericanIndian"]["Dec"] += i.AmericanIndian == 1 ? 1:0
-        entryDate["Asian"]["12"] += i.Asian == 1 ? 1:0
-        entryDate["White"]["12"] +=i.White == 1 ? 1:0
-        entryDate["Black"]["12"] += i.Black == 1 ? 1:0
-        entryDate["Hispanic"]["12"] += i.Hispanic == 1 ? 1:0
-        entryDate["Hawaiian"]["12"] += i.Hawaiian == 1 ? 1:0
+        entryDate["Asian"]["Dec"] += i.Asian == 1 ? 1:0
+        entryDate["White"]["Dec"] +=i.White == 1 ? 1:0
+        entryDate["Black"]["Dec"] += i.Black == 1 ? 1:0
+        entryDate["Hispanic"]["Dec"] += i.Hispanic == 1 ? 1:0
+        entryDate["Hawaiian"]["Dec"] += i.Hawaiian == 1 ? 1:0
         break;
         }
       
@@ -185,129 +185,130 @@ parseData1 = async () => {
     data2.map(i=>{
         switch(i.exitMonth){
         case "01":
-        exitDate["All"]["1"] += 1
-        exitDate["AmericanIndian"]["1"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["1"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["1"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["1"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["1"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["1"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Jan"] += 1
+        exitDate["AmericanIndian"]["Jan"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Jan"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Jan"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Jan"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Jan"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Jan"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "02":
-        exitDate["All"]["2"] += 1
-        exitDate["AmericanIndian"]["2"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["2"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["2"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["2"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["2"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["2"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Feb"] += 1
+        exitDate["AmericanIndian"]["Feb"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Feb"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Feb"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Feb"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Feb"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Feb"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "03":
-        exitDate["All"]["3"] += 1
-        exitDate["AmericanIndian"]["3"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["3"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["3"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["3"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["3"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["3"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Mar"] += 1
+        exitDate["AmericanIndian"]["Mar"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Mar"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Mar"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Mar"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Mar"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Mar"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "04":
-        exitDate["All"]["4"] += 1
-        exitDate["AmericanIndian"]["4"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["4"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["4"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["4"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["4"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["4"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Apr"] += 1
+        exitDate["AmericanIndian"]["Apr"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Apr"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Apr"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Apr"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Apr"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Apr"] += i.Hawaiian == 1 ? 1:0
         break;
         
         
         case "05":
-        exitDate["All"]["5"] += 1
-        exitDate["AmericanIndian"]["5"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["5"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["5"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["5"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["5"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["5"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["May"] += 1
+        exitDate["AmericanIndian"]["May"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["May"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["May"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["May"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["May"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["May"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "06":
-        exitDate["All"]["6"] += 1
-        exitDate["AmericanIndian"]["6"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["6"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["6"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["6"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["6"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["6"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Jun"] += 1
+        exitDate["AmericanIndian"]["Jun"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Jun"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Jun"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Jun"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Jun"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Jun"] += i.Hawaiian == 1 ? 1:0
         break;
         
         case "07":
-        exitDate["All"]["7"] += 1
-        exitDate["AmericanIndian"]["7"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["7"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["7"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["7"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["7"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["7"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Jul"] += 1
+        exitDate["AmericanIndian"]["Jul"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Jul"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Jul"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Jul"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Jul"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Jul"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "08":
-        exitDate["All"]["8"] += 1
-        exitDate["AmericanIndian"]["8"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["8"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["8"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["8"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["8"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["8"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Aug"] += 1
+        exitDate["AmericanIndian"]["Aug"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Aug"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Aug"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Aug"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Aug"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Aug"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "09":
-        exitDate["All"]["9"] += 1
-        exitDate["AmericanIndian"]["9"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["9"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["9"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["9"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["9"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["9"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Sept"] += 1
+        exitDate["AmericanIndian"]["Sept"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Sept"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Sept"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Sept"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Sept"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Sept"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "10":
-        exitDate["All"]["10"] += 1
-        exitDate["AmericanIndian"]["10"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["10"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["10"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["10"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["10"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["10"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Oct"] += 1
+        exitDate["AmericanIndian"]["Oct"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Oct"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Oct"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Oct"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Oct"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Oct"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "11":
-        exitDate["All"]["11"] += 1
-        exitDate["AmericanIndian"]["11"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["11"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["11"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["11"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["11"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["11"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Nov"] += 1
+        exitDate["AmericanIndian"]["Nov"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Nov"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Nov"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Nov"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Nov"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Nov"] += i.Hawaiian == 1 ? 1:0
         break;
 
         case "12":
-        exitDate["All"]["12"] += 1
-        exitDate["AmericanIndian"]["12"] += i.AmericanIndian == 1 ? 1:0
-        exitDate["Asian"]["12"] += i.Asian == 1 ? 1:0
-        exitDate["White"]["12"] +=i.White == 1 ? 1:0
-        exitDate["Black"]["12"] += i.Black == 1 ? 1:0
-        exitDate["Hispanic"]["12"] += i.Hispanic == 1 ? 1:0
-        exitDate["Hawaiian"]["12"] += i.Hawaiian == 1 ? 1:0
+        exitDate["All"]["Dec"] += 1
+        exitDate["AmericanIndian"]["Dec"] += i.AmericanIndian == 1 ? 1:0
+        exitDate["Asian"]["Dec"] += i.Asian == 1 ? 1:0
+        exitDate["White"]["Dec"] +=i.White == 1 ? 1:0
+        exitDate["Black"]["Dec"] += i.Black == 1 ? 1:0
+        exitDate["Hispanic"]["Dec"] += i.Hispanic == 1 ? 1:0
+        exitDate["Hawaiian"]["Dec"] += i.Hawaiian == 1 ? 1:0
         break;
         }
       
     })
-    //console.log(exitDate)
+    
+    console.log(exitDate.AmericanIndian)
 
     let newExitDate = {}
     for(let i in exitDate){
@@ -319,7 +320,7 @@ parseData1 = async () => {
             newExitDate[i].push({"Month" : j,"Count" : exitDate[i][j]})
         }
     }
-    //console.log(newExitDate.All)
+    console.log(newExitDate.AmericanIndian)
 
 
     let circle1 = d3.select("#circle1")
@@ -336,6 +337,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.All);
+                lineChart1(newExitDate.All);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -354,6 +356,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.AmericanIndian);
+                lineChart1(newExitDate.AmericanIndian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -372,6 +375,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Asian);
+                lineChart1(newExitDate.Asian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -390,6 +394,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Black);
+                lineChart1(newExitDate.Black);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -408,6 +413,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Hawaiian);
+                lineChart1(newExitDate.Hawaiian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -426,6 +432,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.White);
+                lineChart1(newExitDate.White);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -444,6 +451,7 @@ parseData1 = async () => {
             .on("click",function(){
                 //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Hispanic);
+                lineChart1(newExitDate.Hispanic);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
@@ -479,7 +487,7 @@ lineChart = function(data){
     height = 360 
 
     // append the svg object to the body of the page
-    var svg_line = d3.select("#viz_line")
+    var svg_line = d3.select("#viz_line1")
                 /*//.append("svg")
                 .attr("width", width )
                 .attr("height", height)
@@ -488,7 +496,7 @@ lineChart = function(data){
                 "translate(" + margin.left + "," + margin.top + ")");*/
 
 
-    d3.selectAll("#viz_line > *").remove();
+    d3.selectAll("#viz_line1> *").remove();
 
     // Initialise a X axis:
     let x = d3.scaleBand()
@@ -517,6 +525,79 @@ lineChart = function(data){
         )
 
         svg_line.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(dd) {return x(dd.Month)})
+        .attr("cy", function(dd) {return y(dd.Count)})
+        .attr("r", 5)
+        .attr("fill","#232323e8");
+
+    console.log(data)
+};
+
+lineChart1 = function(data){
+
+    let month = []
+    let max = Number.NEGATIVE_INFINITY;
+    let min = Number.POSITIVE_INFINITY;
+    for(let i=0;i<12;i++)
+    {
+        month.push(data[i].Month)
+        if(max<data[i].Count)
+        {
+            max = data[i].Count
+        }
+        if(min>data[i].Count)
+        {
+            min = data[i].Count
+        }
+    }
+    //d3.select("#my_dataviz > *").remove();
+
+    var margin = {top: 10, right: 30, bottom: 30, left: 50},
+    width = 730 
+    height = 360 
+
+    // append the svg object to the body of the page
+    var svg_line1 = d3.select("#viz_line2")
+                /*//.append("svg")
+                .attr("width", width )
+                .attr("height", height)
+                .append("g")
+                .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");*/
+
+
+    d3.selectAll("#viz_line2 > *").remove();
+
+    // Initialise a X axis:
+    let x = d3.scaleBand()
+    .padding(1)
+    .range([margin.left, width - margin.right])
+    .domain(month)
+
+    svg_line1.append('g').call(d3.axisBottom(x)).attr('transform', `translate(0,${height - margin.bottom})`)
+
+    // Add Y axis
+    let y = d3.scaleLinear()
+      .domain([min-Math.round(10/100 * min),max+Math.round(10/100 * max)])
+      .range([ height - margin.bottom, margin.top ]);
+
+      svg_line1.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+
+    // Add the line
+    svg_line1.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "#bc2a66")
+      .attr("stroke-width", 2.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.Month) })
+        .y(function(d) { return y(d.Count) })
+        )
+
+        svg_line1.selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
