@@ -432,7 +432,7 @@ parseData1 = async () => {
 
 let svg_text = d3.select("#viz_line1");
   svg_text.append("text")
-          .text("Select a state to get details")
+          .text("Select an ethnicity to get details")
           .attr("x", 150)
           .attr("y",150)
           .style("font","25px times");
