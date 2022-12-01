@@ -455,6 +455,13 @@ choropleth = async () => {
           .attr("y",90)
           .style("font","25px times");
 
+          let svg_text2 = d3.select("#viz4");
+          svg_text2.append("text")
+                  .text("Select a disability type to show data")
+                  .attr("x", 150)
+                  .attr("y",180)
+                  .style("font","25px times");
+
 
 let circle8 = d3.select("#circle8")
           .attr("width",40)
@@ -1124,8 +1131,8 @@ function exitbar(exitDisab)
   }
   console.log(exit_data)
   let exitwidth = 690 
-  let exitheight = 400-30
-  let gmargin = {top: 30, right: 40, bottom: 70, left:65}
+  let exitheight = 400-60
+  let exitmargin = {top: 30, right: 40, bottom: 70, left:65}
   let svg_exit = d3.select("#viz4")
   d3.selectAll("#viz4 > *").remove();
 
@@ -1143,13 +1150,13 @@ function exitbar(exitDisab)
                   .text("a simple tooltip");
 
   let x = d3.scaleBand()
-            .range([65,exitwidth-40])
+            .range([65,exitwidth-exitmargin.right])
             .domain(exit_data.map(function(de) {return de.Key}))
             .padding(0.6);
 
   //Creating X-Axis
   svg_exit.append("g")
-            .attr("transform", "translate(0," + exitheight + ")")
+            .attr("transform", "translate(0," + exitheight+ ")")
             .call(d3.axisBottom(x));
 
   let y = d3.scaleLinear()
@@ -1159,7 +1166,7 @@ function exitbar(exitDisab)
   //Creating Y-Axis
   svg_exit.append('g')
             .call(d3.axisLeft(y))
-            .attr('transform', `translate(${gmargin.left},0)`)
+            .attr('transform', `translate(${exitmargin.left},0)`)
 
   svg_exit.selectAll("bar")
             .data(exit_data)
@@ -1188,6 +1195,13 @@ function exitbar(exitDisab)
             .attr("y", 20)
             .attr("transform", "rotate(-90)")
             .text("Count");
+
+  svg_exit.append("text")
+            .attr("class", "x label")
+            .attr("text-anchor", "middle")
+            .attr("x", 360)
+            .attr("y", 380)
+            .text("Exit Type");
 
 
 }
