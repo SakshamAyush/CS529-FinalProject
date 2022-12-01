@@ -75,153 +75,76 @@ parseData = async () => {
         })
     )
 
-    //console.log(finalData.d1[0].HourlyWage)
-    //console.log(finalData.d2)
-    //console.log(finalData.d3)
-    //console.log(finalData.d4)
-    //console.log(finalData)
+    let circle12 = d3.select("#circle12")
 
-
-
-    //circlesvg = [{X:10,Y:50},{X:10,Y:60},{X:30,Y:70},{X:100,Y:80}]
-
-    /*let circle1 = d3.select("#circle1")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
-
-    circle1.append("circle")
+    circle12.append("circle")
+            .attr("id", "circleL")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 scatterPlot(finalData.d1);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.selectAll("#circleM").attr('fill','#2C3333');
+                d3.selectAll("#circleN").attr('fill','#2C3333');
+                d3.selectAll("#circleO").attr('fill','#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
-    let circle2 = d3.select("#circle2")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
+    let circle13 = d3.select("#circle13")
 
-    circle2.append("circle")
+    circle13.append("circle")
+            .attr("id", "circleM")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 scatterPlot(finalData.d2);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.selectAll("#circleL").attr('fill','#2C3333');
+                d3.selectAll("#circleN").attr('fill','#2C3333');
+                d3.selectAll("#circleO").attr('fill','#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
-    let circle3 = d3.select("#circle3")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
+    let circle14 = d3.select("#circle14")
 
-    circle3.append("circle")
+    circle14.append("circle")
+            .attr("id", "circleN")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 scatterPlot(finalData.d3);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.selectAll("#circleL").attr('fill','#2C3333');
+                d3.selectAll("#circleM").attr('fill','#2C3333');
+                d3.selectAll("#circleO").attr('fill','#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
-    let circle4 = d3.select("#circle4")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
+    let circle15 = d3.select("#circle15")
 
-    circle4.append("circle")
+    circle15.append("circle")
+            .attr("id", "circleO")
             .attr('cx', 25)
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 scatterPlot(finalData.d4);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.selectAll("#circleL").attr('fill','#2C3333');
+                d3.selectAll("#circleM").attr('fill','#2C3333');
+                d3.selectAll("#circleN").attr('fill','#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
 
-    let circle5 = d3.select("#circle5")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
-
-    circle5.append("circle")
-            .attr('cx', 25)
-            .attr('cy', 25)
-            .attr('r', 10)
-            .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
-            .on("click",function(){
-                heatmap(finalData.d1);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
-                d3.select(this).attr('fill', '#fff');
-            });
-
-    let circle6 = d3.select("#circle6")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
-
-    circle6.append("circle")
-            .attr('cx', 25)
-            .attr('cy', 25)
-            .attr('r', 10)
-            .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
-            .on("click",function(){
-                heatmap(finalData.d2);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
-                d3.select(this).attr('fill', '#fff');
-            });
-
-    let circle7 = d3.select("#circle7")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
-
-    circle7.append("circle")
-            .attr('cx', 25)
-            .attr('cy', 25)
-            .attr('r', 10)
-            .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
-            .on("click",function(){
-                heatmap(finalData.d3);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
-                d3.select(this).attr('fill', '#fff');
-            });
-
-    let circle8 = d3.select("#circle8")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
-
-    circle8.append("circle")
-            .attr('cx', 25)
-            .attr('cy', 25)
-            .attr('r', 10)
-            .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
-            .on("click",function(){
-                heatmap(finalData.d4);
-                d3.selectAll("circle").attr('fill', '#69a3b2');
-                d3.select(this).attr('fill', '#fff');
-            });
-*/
+    //scatterPlot(finalData.d1)
     
 
     return finalData;
@@ -349,19 +272,18 @@ heatmap = function(dat){
 
 };
 
-//heatmap();
 
 let scatterPlot = function(data) {
     d3.selectAll("#scatterplot > *").remove();
     let margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 690 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
     const xLabel = 'Hourly Wage';
     const yLabel = 'Hours Worked in a Week';
 
     let scatterplot = d3.select("#scatterplot")
-                .append("svg")
+                //.append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
@@ -381,7 +303,7 @@ let scatterPlot = function(data) {
     xAxisG.append('text')
         .attr('class', 'axis-label')
         .attr('x', innerWidth / 2 -70)
-        .attr('y', 57)
+        .attr('y', 58)
         .text(xLabel);
 
     yAxisG.append('text')
@@ -417,7 +339,6 @@ let scatterPlot = function(data) {
             .attr("cy", function (d) { return y(d.HoursWorked); } )
             .attr("r", 1.5)
             .style("fill", "#bc2a66");
-  
 
 };
 
