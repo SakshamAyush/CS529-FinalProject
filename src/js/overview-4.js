@@ -491,7 +491,7 @@ lineChart = function(data){
         }
     }
 
-    var margin = {top: 10, right: 30, bottom: 30, left: 50},
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 730 
     height = 350 
 
@@ -519,7 +519,7 @@ lineChart = function(data){
             .attr("class", "y label")
             .attr("text-anchor", "end")
             .attr("x", -145)
-            .attr("y", 5)
+            .attr("y", 15)
             .attr("transform", "rotate(-90)")
             .text("Count");
 
@@ -549,17 +549,12 @@ lineChart = function(data){
             .attr("y", 30)
             .style("font","20px times");
 
-    svg_line.append("text")
-            .text("by Ethnicity")
-            .attr("x", 565)
-            .attr("y", 55)
-            .style("font","20px times");
 
     svg_line.append("line")
          .attr("x1", 0)
-         .attr("y1", 360)
+         .attr("y1", 350)
          .attr("x2", 720)
-         .attr("y2", 360)
+         .attr("y2", 350)
          .attr("stroke","black")
          .attr("stroke-width","2");
 
@@ -585,9 +580,9 @@ lineChart1 = function(data){
     }
     //d3.select("#my_dataviz > *").remove();
 
-    var margin = {top: 10, right: 30, bottom: 30, left: 50},
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 730 
-    height = 320 
+    height = 340 
 
     // append the svg object to the body of the page
     var svg_line1 = d3.select("#viz_line2")
@@ -613,7 +608,7 @@ lineChart1 = function(data){
             .attr("class", "y label")
             .attr("text-anchor", "end")
             .attr("x", -145)
-            .attr("y", 5)
+            .attr("y", 15)
             .attr("transform", "rotate(-90)")
             .text("Count");
 
@@ -641,12 +636,6 @@ lineChart1 = function(data){
             .text("Exit Distribution")
             .attr("x", 550)
             .attr("y", 30)
-            .style("font","20px times");
-
-    svg_line1.append("text")
-            .text("by Ethnicity")
-            .attr("x", 565)
-            .attr("y", 55)
             .style("font","20px times");
 
     console.log(data)
