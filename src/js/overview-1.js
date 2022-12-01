@@ -1069,8 +1069,8 @@ function exitbar(exitDisab)
     
   }
   console.log(exit_data)
-  let exitwidth = 740 
-  let exitheight = 585-30
+  let exitwidth = 690 
+  let exitheight = 400-30
   let gmargin = {top: 30, right: 40, bottom: 70, left:65}
   let svg_exit = d3.select("#viz4")
   d3.selectAll("#viz4 > *").remove();
@@ -1126,6 +1126,14 @@ function exitbar(exitDisab)
            .on('mouseout', function(){
               return exit_tooltip.style("visibility", "hidden");
             })
+
+  svg_exit.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "middle")
+            .attr("x", -180)
+            .attr("y", 20)
+            .attr("transform", "rotate(-90)")
+            .text("Count");
 
 
 }

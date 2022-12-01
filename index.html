@@ -44,9 +44,9 @@
     </div>
 
     <div class="container" id="visual2">
-        <div style="width: 49%; float: left">
+        <div class="container" id="leftside" style="width: 49%; float: left">
             <h2><u>Entry and Exit distribution for each month</u></h2>
-            <div id='buttons' style="width:100%; height:100 float:left">
+            <div id='buttons' style="width:100%; height:100">
                 <svg id = "circle1" style="width: 13%; height:50; float:left"></svg>
                 <svg id = "circle2" style="width: 13%; height:50; float:left"></svg>
                 <svg id = "circle3" style="width: 13%; height:50; float:left"></svg>
@@ -57,17 +57,21 @@
             </div>
             
             <svg id = "viz_line1" style="width: 100%; height:45%; float:left"></svg>
-                        <svg id = "viz_line2" style="width: 100%; height:45%; float:left"></svg>
-
+            <svg id = "viz_line2" style="width: 100%; height:45%; float:left"></svg>
+        </div>
+        <div class="container" id="rightside" style="width: 49%; float: right">
+            <h2><u>Exit type for each disability</u></h2>
+            <svg id = 'viz4' style=" width: 690; height: 400; "></svg>
+            <svg id = 'viz5' style=" width: 690; height: 400; "></svg>
             
-            
-            
-            <!-- <svg id = "circle3" style="width: 28%; height:100; margin-top:20; float:right"></svg>
-            <svg id = "circle4" style="width: 28%; height:100; margin-top:20; float:right"></svg> -->
-           
+        
         </div>
 
-        <div style="width: 50%; float: left">
+            
+           
+    </div>
+
+        <div style="width: 49%; float:right">
             <h2><u>HeatMap</u></h2>
             <svg id = 'heatchart' style="width: 70%; height:550; margin-top:20;float:left"></svg>
             <svg id = "circle8" style="width: 28%; height:100; margin-top:20; float:right"></svg>
