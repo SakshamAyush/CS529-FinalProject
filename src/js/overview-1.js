@@ -14,6 +14,10 @@ choropleth = async () => {
   gender = {}
   eth = {}
   disab = {}
+  exitCognitive = {exit0:0, exit1:0, exit2:0, exit3:0, exit4:0, exit5:0, exit6:0, exit7:0}
+  exitSensory = {exit0:0, exit1:0, exit2:0, exit3:0, exit4:0, exit5:0, exit6:0, exit7:0}
+  exitPhysical = {exit0:0, exit1:0, exit2:0, exit3:0, exit4:0, exit5:0, exit6:0, exit7:0}
+  exitMental = {exit0:0, exit1:0, exit2:0, exit3:0, exit4:0, exit5:0, exit6:0, exit7:0}
 
   for(let i=0; i<data.length; i++)
   {
@@ -167,8 +171,160 @@ choropleth = async () => {
       }
     }
 
+    if(data[i].PrimDisability == 17)
+    {
+      //cognitive
+      if(data[i].exitType==0)
+      {
+        exitCognitive.exit0 = exitCognitive.exit0 + 1;
+      }
+      if(data[i].exitType==1)
+      {
+        exitCognitive.exit1 = exitCognitive.exit1 + 1;
+      }
+      if(data[i].exitType==2)
+      {
+        exitCognitive.exit2 = exitCognitive.exit2 + 1;
+      }
+      if(data[i].exitType==3)
+      {
+        exitCognitive.exit3 = exitCognitive.exit3 + 1;
+      }
+      if(data[i].exitType==4)
+      {
+        exitCognitive.exit4 = exitCognitive.exit4 + 1;
+      }
+      if(data[i].exitType==5)
+      {
+        exitCognitive.exit5 = exitCognitive.exit5 + 1;
+      }
+      if(data[i].exitType==6)
+      {
+        exitCognitive.exit6 = exitCognitive.exit6 + 1;
+      }
+      if(data[i].exitType==7)
+      {
+        exitCognitive.exit7 = exitCognitive.exit7 + 1;
+      }
+
+    }
+    if(data[i].PrimDisability==1 || data[i].PrimDisability==2 || data[i].PrimDisability==3 || data[i].PrimDisability==4 || data[i].PrimDisability==5
+      || data[i].PrimDisability==6 || data[i].PrimDisability==7 || data[i].PrimDisability==8 || data[i].PrimDisability==9)
+    {
+      //sensory
+      if(data[i].exitType==0)
+      {
+        exitSensory.exit0 = exitSensory.exit0 + 1;
+      }
+      if(data[i].exitType==1)
+      {
+        exitSensory.exit1 = exitSensory.exit1 + 1;
+      }
+      if(data[i].exitType==2)
+      {
+        exitSensory.exit2 = exitSensory.exit2 + 1;
+      }
+      if(data[i].exitType==3)
+      {
+        exitSensory.exit3 = exitSensory.exit3 + 1;
+      }
+      if(data[i].exitType==4)
+      {
+        exitSensory.exit4 = exitSensory.exit4 + 1;
+      }
+      if(data[i].exitType==5)
+      {
+        exitSensory.exit5 = exitSensory.exit5 + 1;
+      }
+      if(data[i].exitType==6)
+      {
+        exitSensory.exit6 = exitSensory.exit6 + 1;
+      }
+      if(data[i].exitType==7)
+      {
+        exitSensory.exit7 = exitSensory.exit7 + 1;
+      }
+
+    }
+
+    if(data[i].PrimDisability==10 || data[i].PrimDisability==11 || data[i].PrimDisability==12 || data[i].PrimDisability==13 || data[i].PrimDisability==14
+      || data[i].PrimDisability==15 || data[i].PrimDisability==16)
+    {
+      //physical
+      if(data[i].exitType==0)
+      {
+        exitPhysical.exit0 = exitPhysical.exit0 + 1;
+      }
+      if(data[i].exitType==1)
+      {
+        exitPhysical.exit1 = exitPhysical.exit1 + 1;
+      }
+      if(data[i].exitType==2)
+      {
+        exitPhysical.exit2 = exitPhysical.exit2 + 1;
+      }
+      if(data[i].exitType==3)
+      {
+        exitPhysical.exit3 = exitPhysical.exit3 + 1;
+      }
+      if(data[i].exitType==4)
+      {
+        exitPhysical.exit4 = exitPhysical.exit4 + 1;
+      }
+      if(data[i].exitType==5)
+      {
+        exitPhysical.exit5 = exitPhysical.exit5 + 1;
+      }
+      if(data[i].exitType==6)
+      {
+        exitPhysical.exit6 = exitPhysical.exit6 + 1;
+      }
+      if(data[i].exitType==7)
+      {
+        exitPhysical.exit7 = exitPhysical.exit7 + 1;
+      }
+
+    }
+    if(data[i].PrimDisability == 18 || data[i].PrimDisability == 19)
+    {
+      //mental
+      if(data[i].exitType==0)
+      {
+        exitMental.exit0 = exitMental.exit0 + 1;
+      }
+      if(data[i].exitType==1)
+      {
+        exitMental.exit1 = exitMental.exit1 + 1;
+      }
+      if(data[i].exitType==2)
+      {
+        exitMental.exit2 = exitMental.exit2 + 1;
+      }
+      if(data[i].exitType==3)
+      {
+        exitMental.exit3 = exitMental.exit3 + 1;
+      }
+      if(data[i].exitType==4)
+      {
+        exitMental.exit4 = exitMental.exit4 + 1;
+      }
+      if(data[i].exitType==5)
+      {
+        exitMental.exit5 = exitMental.exit5 + 1;
+      }
+      if(data[i].exitType==6)
+      {
+        exitMental.exit6 = exitMental.exit6 + 1;
+      }
+      if(data[i].exitType==7)
+      {
+        exitMental.exit7 = exitMental.exit7 + 1;
+      }
+    }
+
 
   }
+  console.log(exitCognitive)
 
 
   let minValue = Number.POSITIVE_INFINITY;
@@ -299,6 +455,70 @@ choropleth = async () => {
           .attr("y",90)
           .style("font","25px times");
 
+          let svg_text2 = d3.select("#viz4");
+          svg_text2.append("text")
+                  .text("Select a disability type to show data")
+                  .attr("x", 150)
+                  .attr("y",180)
+                  .style("font","25px times");
+
+
+let circle8 = d3.select("#circle8")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle8.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitCognitive)
+  });
+
+  let circle9 = d3.select("#circle9")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle9.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitPhysical)
+  });
+
+  let circle10 = d3.select("#circle10")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle10.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitSensory)
+  });
+
+  let circle11 = d3.select("#circle11")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle11.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitMental)
+  });
+
 
 }
 choropleth()
@@ -428,7 +648,6 @@ function gender_plot(gender,selectedState)
             .attr("text-anchor", "middle")
             .attr("y",130)
             .style("font","20px times");
-
 
 
 }
@@ -895,4 +1114,94 @@ function disability_plot(disab, selectedState)
   .attr("y2", 285)
   .attr("stroke","black")
   .attr("stroke-width","3");
+}
+
+function exitbar(exitDisab)
+{
+  let exit_data = []
+  let exitval=[]
+  for(let i=0;i<8;i++)
+  {
+    //Creating a dictionary of gender counts
+    const exittemp = {"Key": Object.keys(exitDisab)[i], "Value": parseInt(Object.values(exitDisab)[i]) }
+
+    exit_data.push(exittemp)
+    exitval.push(parseInt(Object.values(exitDisab)[i]))
+    
+  }
+  console.log(exit_data)
+  let exitwidth = 690 
+  let exitheight = 400-60
+  let exitmargin = {top: 30, right: 40, bottom: 70, left:65}
+  let svg_exit = d3.select("#viz4")
+  d3.selectAll("#viz4 > *").remove();
+
+  let exit_tooltip = d3.select("body")
+                  .append("div")
+                  .style("position", "absolute")
+                  .style("z-index", "10")
+                  .style("visibility", "hidden")
+                  .style("background", "grey")
+                  .style("opacity",0.9)
+                  .style("border", "solid")
+                  .style("border-width", "2px")
+                  .style("border-radius", "10px")
+                  .style("padding", "15px")
+                  .text("a simple tooltip");
+
+  let x = d3.scaleBand()
+            .range([65,exitwidth-exitmargin.right])
+            .domain(exit_data.map(function(de) {return de.Key}))
+            .padding(0.6);
+
+  //Creating X-Axis
+  svg_exit.append("g")
+            .attr("transform", "translate(0," + exitheight+ ")")
+            .call(d3.axisBottom(x));
+
+  let y = d3.scaleLinear()
+            .domain([0, Math.max(...exitval)+100])
+            .range([ exitheight, 10]);
+
+  //Creating Y-Axis
+  svg_exit.append('g')
+            .call(d3.axisLeft(y))
+            .attr('transform', `translate(${exitmargin.left},0)`)
+
+  svg_exit.selectAll("bar")
+            .data(exit_data)
+            .enter()
+            .append("rect")
+            .attr("x", function(dexit) { return x(dexit.Key); })
+            .attr("y", function(dexit)  { return y(dexit.Value);})
+            .attr("width", x.bandwidth())
+            .attr("height", function(dexit) {  return exitheight - y(dexit.Value) })
+            .attr("fill", "#bc2a66")
+            .on('mouseover',function(dexit){
+              exit_tooltip.html("<b>Count: </b>"+dexit.Value);
+              return exit_tooltip.style("visibility", "visible");
+            })
+           .on('mousemove',function(dg){
+              return exit_tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+            })
+           .on('mouseout', function(){
+              return exit_tooltip.style("visibility", "hidden");
+            })
+
+  svg_exit.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "middle")
+            .attr("x", -180)
+            .attr("y", 20)
+            .attr("transform", "rotate(-90)")
+            .text("Count");
+
+  svg_exit.append("text")
+            .attr("class", "x label")
+            .attr("text-anchor", "middle")
+            .attr("x", 360)
+            .attr("y", 380)
+            .text("Exit Type");
+
+
 }

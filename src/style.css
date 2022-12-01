@@ -103,6 +103,27 @@
     margin-top: 10px;
     background: rgba(227, 227, 227, 0.85);
   }
+
+  #visual2 h2{
+    font-size: 25px;
+    font-family: 'Quicksand', sans-serif ;
+    text-align: center;
+    color: #2C3333;
+  }
+
+  #leftside{
+    height: 810px;
+    align-items: center ;
+    margin-top: 10px;
+  }
+
+  #rightside{
+    height: 810px;
+    align-items: center ;
+    margin-top: 10px;
+  }
+
+
 /* For page 2 */
   #moreinfo{
     padding: 10px 10px;
