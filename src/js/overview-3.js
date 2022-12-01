@@ -85,7 +85,7 @@ parseData = async () => {
 
     //circlesvg = [{X:10,Y:50},{X:10,Y:60},{X:30,Y:70},{X:100,Y:80}]
 
-    let circle1 = d3.select("#circle1")
+    /*let circle1 = d3.select("#circle1")
                     .append("svg")
                     .attr("width",100)
                     .attr("heigth",100)
@@ -221,7 +221,7 @@ parseData = async () => {
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
-
+*/
     
 
     return finalData;

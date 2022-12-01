@@ -1,7 +1,7 @@
 parseData1 = async () => {
 
     let entryDate = {"All": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
-                  "AmericanIndian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
+                  "AmericanIndian": {"Jan":0,"Feb":0,"Mar":0,"Apr":0,"May":0,"Jun":0,"Jul":0,"Aug":0,"Sept":0,"Oct":0,"Nov":0,"Dec":0},
                   "Asian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
                   "Black": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
                   "Hawaiian": {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},
@@ -37,14 +37,14 @@ parseData1 = async () => {
     }))
 
 
-    data = data1.map(i=>({...i, entryMonth : String(i.Entry).slice(4,6), exitMonth : String(i.Exit).slice(4,6),}))
+    data2 = data1.map(i=>({...i, entryMonth : String(i.Entry).slice(4,6), exitMonth : String(i.Exit).slice(4,6),}))
     //console.log(data[0].entryMonth, data[0].exitMonth)
 
-    data.map(i=>{
+    data2.map(i=>{
         switch(i.entryMonth){
         case "01":
         entryDate["All"]["1"] += 1 
-        entryDate["AmericanIndian"]["1"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Jan"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["1"] += i.Asian == 1 ? 1:0
         entryDate["White"]["1"] +=i.White == 1 ? 1:0
         entryDate["Black"]["1"] += i.Black == 1 ? 1:0
@@ -54,7 +54,7 @@ parseData1 = async () => {
         
         case "02":
         entryDate["All"]["2"] += 1
-        entryDate["AmericanIndian"]["2"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Feb"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["2"] += i.Asian == 1 ? 1:0
         entryDate["White"]["2"] +=i.White == 1 ? 1:0
         entryDate["Black"]["2"] += i.Black == 1 ? 1:0
@@ -64,7 +64,7 @@ parseData1 = async () => {
         
         case "03":
         entryDate["All"]["3"] += 1
-        entryDate["AmericanIndian"]["3"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Mar"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["3"] += i.Asian == 1 ? 1:0
         entryDate["White"]["3"] +=i.White == 1 ? 1:0
         entryDate["Black"]["3"] += i.Black == 1 ? 1:0
@@ -74,7 +74,7 @@ parseData1 = async () => {
         
         case "04":
         entryDate["All"]["4"] += 1
-        entryDate["AmericanIndian"]["4"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Apr"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["4"] += i.Asian == 1 ? 1:0
         entryDate["White"]["4"] +=i.White == 1 ? 1:0
         entryDate["Black"]["4"] += i.Black == 1 ? 1:0
@@ -85,7 +85,7 @@ parseData1 = async () => {
         
         case "05":
         entryDate["All"]["5"] += 1
-        entryDate["AmericanIndian"]["5"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["May"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["5"] += i.Asian == 1 ? 1:0
         entryDate["White"]["5"] +=i.White == 1 ? 1:0
         entryDate["Black"]["5"] += i.Black == 1 ? 1:0
@@ -95,7 +95,7 @@ parseData1 = async () => {
         
         case "06":
         entryDate["All"]["6"] += 1
-        entryDate["AmericanIndian"]["6"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Jun"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["6"] += i.Asian == 1 ? 1:0
         entryDate["White"]["6"] +=i.White == 1 ? 1:0
         entryDate["Black"]["6"] += i.Black == 1 ? 1:0
@@ -105,7 +105,7 @@ parseData1 = async () => {
         
         case "07":
         entryDate["All"]["7"] += 1
-        entryDate["AmericanIndian"]["7"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Jul"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["7"] += i.Asian == 1 ? 1:0
         entryDate["White"]["7"] +=i.White == 1 ? 1:0
         entryDate["Black"]["7"] += i.Black == 1 ? 1:0
@@ -115,7 +115,7 @@ parseData1 = async () => {
 
         case "08":
         entryDate["All"]["8"] += 1
-        entryDate["AmericanIndian"]["8"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Aug"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["8"] += i.Asian == 1 ? 1:0
         entryDate["White"]["8"] +=i.White == 1 ? 1:0
         entryDate["Black"]["8"] += i.Black == 1 ? 1:0
@@ -125,7 +125,7 @@ parseData1 = async () => {
 
         case "09":
         entryDate["All"]["9"] += 1
-        entryDate["AmericanIndian"]["9"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Sept"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["9"] += i.Asian == 1 ? 1:0
         entryDate["White"]["9"] +=i.White == 1 ? 1:0
         entryDate["Black"]["9"] += i.Black == 1 ? 1:0
@@ -135,7 +135,7 @@ parseData1 = async () => {
 
         case "10":
         entryDate["All"]["10"] += 1
-        entryDate["AmericanIndian"]["10"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Oct"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["10"] += i.Asian == 1 ? 1:0
         entryDate["White"]["10"] +=i.White == 1 ? 1:0
         entryDate["Black"]["10"] += i.Black == 1 ? 1:0
@@ -145,7 +145,7 @@ parseData1 = async () => {
 
         case "11":
         entryDate["All"]["11"] += 1
-        entryDate["AmericanIndian"]["11"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Nov"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["11"] += i.Asian == 1 ? 1:0
         entryDate["White"]["11"] +=i.White == 1 ? 1:0
         entryDate["Black"]["11"] += i.Black == 1 ? 1:0
@@ -155,7 +155,7 @@ parseData1 = async () => {
 
         case "12":
         entryDate["All"]["12"] += 1
-        entryDate["AmericanIndian"]["12"] += i.AmericanIndian == 1 ? 1:0
+        entryDate["AmericanIndian"]["Dec"] += i.AmericanIndian == 1 ? 1:0
         entryDate["Asian"]["12"] += i.Asian == 1 ? 1:0
         entryDate["White"]["12"] +=i.White == 1 ? 1:0
         entryDate["Black"]["12"] += i.Black == 1 ? 1:0
@@ -165,7 +165,8 @@ parseData1 = async () => {
         }
       
     })
-    //console.log(entryDate)
+    
+    console.log(entryDate.AmericanIndian)
 
     let newEntryDate = {}
     for(let i in entryDate){
@@ -178,10 +179,10 @@ parseData1 = async () => {
         }
     }
     //console.log(newEntryDate)
-    console.log(newEntryDate.All)
+    console.log(newEntryDate.AmericanIndian)
 
 
-    data.map(i=>{
+    data2.map(i=>{
         switch(i.exitMonth){
         case "01":
         exitDate["All"]["1"] += 1
@@ -333,7 +334,7 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                d3.select("#my_dataviz > *").remove();
+                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.All);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
@@ -351,54 +352,150 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                d3.select("#my_dataviz > *").remove();
+                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.AmericanIndian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
                 d3.select(this).attr('fill', '#fff');
             });
 
-    //lineChart(newEntryDate.All)
+    let circle3 = d3.select("#circle3")
+                    .append("svg")
+                    .attr("width",100)
+                    .attr("heigth",100)
 
-    
+    circle3.append("circle")
+            .attr('cx', 25)
+            .attr('cy', 25)
+            .attr('r', 10)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2')
+            .on("click",function(){
+                //d3.select("#my_dataviz > *").remove();
+                lineChart(newEntryDate.Asian);
+                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.select(this).attr('fill', '#fff');
+            });
+
+    let circle4 = d3.select("#circle4")
+                    .append("svg")
+                    .attr("width",100)
+                    .attr("heigth",100)
+
+    circle4.append("circle")
+            .attr('cx', 25)
+            .attr('cy', 25)
+            .attr('r', 10)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2')
+            .on("click",function(){
+                //d3.select("#my_dataviz > *").remove();
+                lineChart(newEntryDate.Black);
+                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.select(this).attr('fill', '#fff');
+            });
+
+    let circle5 = d3.select("#circle5")
+                    .append("svg")
+                    .attr("width",100)
+                    .attr("heigth",100)
+
+    circle5.append("circle")
+            .attr('cx', 25)
+            .attr('cy', 25)
+            .attr('r', 10)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2')
+            .on("click",function(){
+                //d3.select("#my_dataviz > *").remove();
+                lineChart(newEntryDate.Hawaiian);
+                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.select(this).attr('fill', '#fff');
+            });
+
+    let circle6 = d3.select("#circle6")
+                    .append("svg")
+                    .attr("width",100)
+                    .attr("heigth",100)
+
+    circle6.append("circle")
+            .attr('cx', 25)
+            .attr('cy', 25)
+            .attr('r', 10)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2')
+            .on("click",function(){
+                //d3.select("#my_dataviz > *").remove();
+                lineChart(newEntryDate.White);
+                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.select(this).attr('fill', '#fff');
+            });
+
+    let circle7 = d3.select("#circle7")
+                    .append("svg")
+                    .attr("width",100)
+                    .attr("heigth",100)
+
+    circle7.append("circle")
+            .attr('cx', 25)
+            .attr('cy', 25)
+            .attr('r', 10)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2')
+            .on("click",function(){
+                //d3.select("#my_dataviz > *").remove();
+                lineChart(newEntryDate.Hispanic);
+                d3.selectAll("circle").attr('fill', '#69a3b2');
+                d3.select(this).attr('fill', '#fff');
+            });
+
+    //lineChart(newEntryDate.All)
+   
 
 };
 
 parseData1();
 
+
 lineChart = function(data){
+    let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
 
     //d3.select("#my_dataviz > *").remove();
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
-    width = 535 
-    height = 550 
+    width = 730 
+    height = 360 
 
     // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-                .append("svg")
+    var svg_line = d3.select("#viz_line")
+                /*//.append("svg")
                 .attr("width", width )
                 .attr("height", height)
                 .append("g")
                 .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
+                "translate(" + margin.left + "," + margin.top + ")");*/
+
+
+    d3.selectAll("#viz_line > *").remove();
 
     // Initialise a X axis:
-    var x = d3.scaleLinear()
-      .domain(d3.extent(data, function(d) { return d.Month; }))
-      .range([ 0, width ]);
-    svg.append("g")
+    var x = d3.scaleBand()
+      .domain(month)
+      .range([ 10, width ]);
+
+    svg_line.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.Count; })])
+      .domain([d3.min(data, function(d) { return +d.Count; }), d3.max(data, function(d) { return +d.Count; })])
       .range([ height, 0 ]);
-    svg.append("g")
+
+    svg_line.append("g")
       .call(d3.axisLeft(y));
 
     // Add the line
-    svg.append("path")
+    svg_line.append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "#bc2a66")
@@ -408,5 +505,5 @@ lineChart = function(data){
         .y(function(d) { return y(d.Count) })
         )
 
-    console.log("hogaya")
+    console.log(data)
 };
