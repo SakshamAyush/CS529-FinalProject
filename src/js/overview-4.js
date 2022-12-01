@@ -324,9 +324,6 @@ parseData1 = async () => {
 
 
     let circle1 = d3.select("#circle1")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle1.append("circle")
             .attr('cx', 25)
@@ -335,7 +332,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.All);
                 lineChart1(newExitDate.All);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -343,9 +339,6 @@ parseData1 = async () => {
             });
 
     let circle2 = d3.select("#circle2")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle2.append("circle")
             .attr('cx', 25)
@@ -354,7 +347,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.AmericanIndian);
                 lineChart1(newExitDate.AmericanIndian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -362,9 +354,9 @@ parseData1 = async () => {
             });
 
     let circle3 = d3.select("#circle3")
-                    .append("svg")
+                    /*.append("svg")
                     .attr("width",100)
-                    .attr("heigth",100)
+                    .attr("heigth",100)*/
 
     circle3.append("circle")
             .attr('cx', 25)
@@ -373,7 +365,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Asian);
                 lineChart1(newExitDate.Asian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -381,9 +372,6 @@ parseData1 = async () => {
             });
 
     let circle4 = d3.select("#circle4")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle4.append("circle")
             .attr('cx', 25)
@@ -392,7 +380,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Black);
                 lineChart1(newExitDate.Black);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -400,9 +387,6 @@ parseData1 = async () => {
             });
 
     let circle5 = d3.select("#circle5")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle5.append("circle")
             .attr('cx', 25)
@@ -411,7 +395,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Hawaiian);
                 lineChart1(newExitDate.Hawaiian);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -419,9 +402,6 @@ parseData1 = async () => {
             });
 
     let circle6 = d3.select("#circle6")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle6.append("circle")
             .attr('cx', 25)
@@ -430,7 +410,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.White);
                 lineChart1(newExitDate.White);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -438,9 +417,6 @@ parseData1 = async () => {
             });
 
     let circle7 = d3.select("#circle7")
-                    .append("svg")
-                    .attr("width",100)
-                    .attr("heigth",100)
 
     circle7.append("circle")
             .attr('cx', 25)
@@ -449,7 +425,6 @@ parseData1 = async () => {
             .attr('stroke', 'black')
             .attr('fill', '#69a3b2')
             .on("click",function(){
-                //d3.select("#my_dataviz > *").remove();
                 lineChart(newEntryDate.Hispanic);
                 lineChart1(newExitDate.Hispanic);
                 d3.selectAll("circle").attr('fill', '#69a3b2');
@@ -484,7 +459,7 @@ lineChart = function(data){
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 730 
-    height = 360 
+    height = 350 
 
     // append the svg object to the body of the page
     var svg_line = d3.select("#viz_line1")
@@ -513,6 +488,14 @@ lineChart = function(data){
 
       svg_line.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
 
+    svg_line.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "end")
+            .attr("x", -145)
+            .attr("y", 5)
+            .attr("transform", "rotate(-90)")
+            .text("Count");
+
     // Add the line
     svg_line.append("path")
       .datum(data)
@@ -524,7 +507,7 @@ lineChart = function(data){
         .y(function(d) { return y(d.Count) })
         )
 
-        svg_line.selectAll("circle")
+    svg_line.selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
@@ -532,6 +515,18 @@ lineChart = function(data){
         .attr("cy", function(dd) {return y(dd.Count)})
         .attr("r", 5)
         .attr("fill","#232323e8");
+
+    svg_line.append("text")
+            .text("Entry")
+            .attr("x", 550)
+            .attr("y",25)
+            .style("font","20px times");
+
+    svg_line.append("text")
+            .text("Distribution")
+            .attr("x", 565)
+            .attr("y",50)
+            .style("font","20px times");
 
     console.log(data)
 };
@@ -557,7 +552,7 @@ lineChart1 = function(data){
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 730 
-    height = 360 
+    height = 350 
 
     // append the svg object to the body of the page
     var svg_line1 = d3.select("#viz_line2")
@@ -585,6 +580,14 @@ lineChart1 = function(data){
       .range([ height - margin.bottom, margin.top ]);
 
       svg_line1.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
+
+      svg_line1.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "end")
+            .attr("x", -145)
+            .attr("y", 5)
+            .attr("transform", "rotate(-90)")
+            .text("Count");
 
     // Add the line
     svg_line1.append("path")
