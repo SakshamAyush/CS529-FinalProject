@@ -325,10 +325,7 @@ choropleth = async () => {
 
   }
   console.log(exitCognitive)
-  exitbar(exitMental)
-  //console.log(exitSensory)
-  //console.log(exitPhysical)
-  //console.log(exitMental)
+
 
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
@@ -457,6 +454,63 @@ choropleth = async () => {
           .attr("x", 150)
           .attr("y",90)
           .style("font","25px times");
+
+
+let circle8 = d3.select("#circle8")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle8.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitCognitive)
+  });
+
+  let circle9 = d3.select("#circle9")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle9.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitPhysical)
+  });
+
+  let circle10 = d3.select("#circle10")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle10.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitSensory)
+  });
+
+  let circle11 = d3.select("#circle11")
+          .attr("width",40)
+          .attr("heigth",40)
+
+circle11.append("circle")
+  .attr('cx', 25)
+  .attr('cy', 25)
+  .attr('r', 10)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2')
+  .on("click",function(){
+     exitbar(exitMental)
+  });
 
 
 }
