@@ -18,7 +18,8 @@ ethnicity =  async () => {
 
   let amerInd = d3.group(ethnicity, d => d.AmericanIndian);
   let amerIndF = (amerInd.get(1)).length
-  //console.log(amerIndF)
+  console.log(amerInd)
+  console.log(amerIndF)
 
   let asian = d3.group(ethnicity, d => d.Asian);
   let asianF = (asian.get(1)).length
