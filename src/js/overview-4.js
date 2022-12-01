@@ -515,6 +515,14 @@ lineChart = function(data){
             .attr("y", 55)
             .style("font","20px times");
 
+    svg_line.append("line")
+         .attr("x1", 0)
+         .attr("y1", 360)
+         .attr("x2", 720)
+         .attr("y2", 360)
+         .attr("stroke","black")
+         .attr("stroke-width","2");
+
     console.log(data)
 };
 
