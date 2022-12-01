@@ -329,19 +329,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.All);
                 lineChart1(newExitDate.All);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleH").attr('fill','#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleH").attr('fill','#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -353,19 +349,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.AmericanIndian);
                 lineChart1(newExitDate.AmericanIndian);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleH").attr('fill','#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleH").attr('fill','#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -377,19 +369,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.Asian);
                 lineChart1(newExitDate.Asian);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleH").attr('fill','#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleH").attr('fill','#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -401,19 +389,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.Black);
                 lineChart1(newExitDate.Black);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -425,19 +409,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.Hawaiian);
                 lineChart1(newExitDate.Hawaiian);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -449,19 +429,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.White);
                 lineChart1(newExitDate.White);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleH").attr('fill', '#69a3b2');
-                d3.selectAll("#circleJ").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleH").attr('fill', '#2C3333');
+                d3.selectAll("#circleJ").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -473,19 +449,15 @@ parseData1 = async () => {
             .attr('cy', 25)
             .attr('r', 10)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2')
+            .attr('fill', '#2C3333')
             .on("click",function(){
                 lineChart(newEntryDate.Hispanic);
                 lineChart1(newExitDate.Hispanic);
-                d3.selectAll("#circleA").attr('fill','#69a3b2');
-                d3.selectAll("#circleB").attr('fill','#69a3b2');
-                d3.selectAll("#circleC").attr('fill','#69a3b2');
-                d3.selectAll("#circleD").attr('fill', '#69a3b2');
-                d3.selectAll("#circleE").attr('fill','#69a3b2');
-                d3.selectAll("#circleF").attr('fill','#69a3b2');
-                d3.selectAll("#circleG").attr('fill','#69a3b2');
-                d3.selectAll("#circleH").attr('fill', '#69a3b2');
-                d3.selectAll("#circleI").attr('fill', '#69a3b2');
+                d3.selectAll("#circleE").attr('fill','#2C3333');
+                d3.selectAll("#circleF").attr('fill','#2C3333');
+                d3.selectAll("#circleG").attr('fill','#2C3333');
+                d3.selectAll("#circleH").attr('fill', '#2C3333');
+                d3.selectAll("#circleI").attr('fill', '#2C3333');
                 d3.select(this).attr('fill', '#fff');
             });
 
@@ -494,7 +466,7 @@ let svg_text = d3.select("#viz_line1");
   svg_text.append("text")
           .text("Select an ethnicity to get details")
           .attr("x", 150)
-          .attr("y",150)
+          .attr("y",200)
           .style("font","25px times");
 
 };
@@ -569,7 +541,7 @@ lineChart = function(data){
         .attr("cx", function(dd) {return x(dd.Month)})
         .attr("cy", function(dd) {return y(dd.Count)})
         .attr("r", 5)
-        .attr("fill","#232323e8");
+        .attr("fill","#2C3333");
 
     svg_line.append("text")
             .text("Entry Distribution")
@@ -615,7 +587,7 @@ lineChart1 = function(data){
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 730 
-    height = 350 
+    height = 320 
 
     // append the svg object to the body of the page
     var svg_line1 = d3.select("#viz_line2")
@@ -663,7 +635,7 @@ lineChart1 = function(data){
     .attr("cx", function(dd) {return x(dd.Month)})
     .attr("cy", function(dd) {return y(dd.Count)})
     .attr("r", 5)
-    .attr("fill","#232323e8");
+    .attr("fill","#2C3333");
 
     svg_line1.append("text")
             .text("Exit Distribution")
