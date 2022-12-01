@@ -1156,7 +1156,7 @@ function exitbar(exitDisab)
   }
   console.log(exit_data)
   let exitwidth = 690 
-  let exitheight = 300-60
+  let exitheight = 280-60
   let exitmargin = {top: 30, right: 40, bottom: 70, left:65}
   let svg_exit = d3.select("#viz4")
   d3.selectAll("#viz4 > *").remove();
@@ -1225,7 +1225,7 @@ function exitbar(exitDisab)
             .attr("class", "x label")
             .attr("text-anchor", "middle")
             .attr("x", 360)
-            .attr("y", 280)
+            .attr("y", 260)
             .text("Exit Type");
 
 
