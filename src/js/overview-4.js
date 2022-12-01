@@ -457,8 +457,21 @@ parseData1();
 
 
 lineChart = function(data){
-    let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
-
+    let month = []
+    let max = Number.NEGATIVE_INFINITY;
+    let min = Number.POSITIVE_INFINITY;
+    for(let i=0;i<12;i++)
+    {
+        month.push(data[i].Month)
+        if(max<data[i].Count)
+        {
+            max = data[i].Count
+        }
+        if(min>data[i].Count)
+        {
+            min = data[i].Count
+        }
+    }
     //d3.select("#my_dataviz > *").remove();
 
     var margin = {top: 10, right: 30, bottom: 30, left: 50},
@@ -478,21 +491,19 @@ lineChart = function(data){
     d3.selectAll("#viz_line > *").remove();
 
     // Initialise a X axis:
-    var x = d3.scaleBand()
-      .domain(month)
-      .range([ 10, width ]);
+    let x = d3.scaleBand()
+    .padding(1)
+    .range([margin.left, width - margin.right])
+    .domain(month)
 
-    svg_line.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+    svg_line.append('g').call(d3.axisBottom(x)).attr('transform', `translate(0,${height - margin.bottom})`)
 
     // Add Y axis
-    var y = d3.scaleLinear()
-      .domain([d3.min(data, function(d) { return +d.Count; }), d3.max(data, function(d) { return +d.Count; })])
-      .range([ height, 0 ]);
+    let y = d3.scaleLinear()
+      .domain([min-Math.round(10/100 * min),max+Math.round(10/100 * max)])
+      .range([ height - margin.bottom, margin.top ]);
 
-    svg_line.append("g")
-      .call(d3.axisLeft(y));
+      svg_line.append('g').call(d3.axisLeft(y)).attr('transform', `translate(${margin.left},0)`)
 
     // Add the line
     svg_line.append("path")
@@ -504,6 +515,15 @@ lineChart = function(data){
         .x(function(d) { return x(d.Month) })
         .y(function(d) { return y(d.Count) })
         )
+
+        svg_line.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(dd) {return x(dd.Month)})
+        .attr("cy", function(dd) {return y(dd.Count)})
+        .attr("r", 5)
+        .attr("fill","#232323e8");
 
     console.log(data)
 };
